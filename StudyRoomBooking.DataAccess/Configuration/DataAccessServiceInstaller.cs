@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StudyRoomBooking.DataAccess.Configuration
 {
@@ -15,7 +12,7 @@ namespace StudyRoomBooking.DataAccess.Configuration
             #region[In case of multitenant application, this can be move to Middleware or UnitOfWork]
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                options.UseMySQL(configuration.GetConnectionString("DefaultConnection"))
             );
 
             #endregion
