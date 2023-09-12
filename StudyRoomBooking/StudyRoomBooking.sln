@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.DataAccess
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.Models", "..\StudyRoomBooking.Models\StudyRoomBooking.Models.csproj", "{C92773DE-C984-4679-BAE2-0C39942BDEB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.Fixtures", "..\StudyRoomBooking.Fixtures.Test\StudyRoomBooking.Fixtures.csproj", "{4AEBD8D1-BA57-4C86-A2A9-48255920183F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.Fixtures", "..\StudyRoomBooking.Fixtures\StudyRoomBooking.Fixtures.csproj", "{3EE2A2EE-84DC-49F5-B2CA-980F6E388285}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyRoomBooking.Core.Fixtures", "..\StudyRoomBooking.Core.Fixtures\StudyRoomBooking.Core.Fixtures.csproj", "{62E0CE6F-045C-42BD-8856-4B6D228E45D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyRoomBooking.Core.Fixtures", "..\StudyRoomBooking.Core.Fixtures\StudyRoomBooking.Core.Fixtures.csproj", "{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyRoomBooking.DataAccess.Fixtures", "..\StudyRoomBooking.DataAccess.Fixtures\StudyRoomBooking.DataAccess.Fixtures.csproj", "{6E839692-8EA6-4A82-A17E-B3E1DF4A3CFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyRoomBooking.DataAccess.Fixtures", "..\StudyRoomBooking.DataAccess.Fixtures\StudyRoomBooking.DataAccess.Fixtures.csproj", "{886BADF7-72B7-4D01-858E-A973C8946D7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,18 +39,18 @@ Global
 		{C92773DE-C984-4679-BAE2-0C39942BDEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C92773DE-C984-4679-BAE2-0C39942BDEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C92773DE-C984-4679-BAE2-0C39942BDEB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AEBD8D1-BA57-4C86-A2A9-48255920183F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AEBD8D1-BA57-4C86-A2A9-48255920183F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AEBD8D1-BA57-4C86-A2A9-48255920183F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AEBD8D1-BA57-4C86-A2A9-48255920183F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62E0CE6F-045C-42BD-8856-4B6D228E45D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62E0CE6F-045C-42BD-8856-4B6D228E45D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62E0CE6F-045C-42BD-8856-4B6D228E45D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62E0CE6F-045C-42BD-8856-4B6D228E45D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E839692-8EA6-4A82-A17E-B3E1DF4A3CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E839692-8EA6-4A82-A17E-B3E1DF4A3CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E839692-8EA6-4A82-A17E-B3E1DF4A3CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E839692-8EA6-4A82-A17E-B3E1DF4A3CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE2A2EE-84DC-49F5-B2CA-980F6E388285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE2A2EE-84DC-49F5-B2CA-980F6E388285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE2A2EE-84DC-49F5-B2CA-980F6E388285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE2A2EE-84DC-49F5-B2CA-980F6E388285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886BADF7-72B7-4D01-858E-A973C8946D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886BADF7-72B7-4D01-858E-A973C8946D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886BADF7-72B7-4D01-858E-A973C8946D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886BADF7-72B7-4D01-858E-A973C8946D7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
