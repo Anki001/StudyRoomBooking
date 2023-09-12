@@ -16,3 +16,9 @@
 /StudyRoomBooking.Core/bin/Debug
 /StudyRoomBooking.DataAccess/bin/Debug/net6.0
 /StudyRoomBooking.Models/bin/Debug
+/StudyRoomBooking.Core.Fixtures/bin/Debug/net6.0
+/StudyRoomBooking.Core.Fixtures/obj
+/StudyRoomBooking.DataAccess.Fixtures/bin/Debug/net6.0
+/StudyRoomBooking.DataAccess.Fixtures/obj
+/StudyRoomBooking.Fixtures.Test/bin/Debug
+/StudyRoomBooking.Fixtures.Test/obj
