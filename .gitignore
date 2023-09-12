@@ -12,3 +12,7 @@
 /StudyRoomBooking.DataAccess/obj
 /StudyRoomBooking.Models/bin/Debug/netstandard2.0
 /StudyRoomBooking.Models/obj
+/StudyRoomBooking/.vs/ProjectEvaluation
+/StudyRoomBooking.Core/bin/Debug
+/StudyRoomBooking.DataAccess/bin/Debug/net6.0
+/StudyRoomBooking.Models/bin/Debug
