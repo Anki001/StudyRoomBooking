@@ -6,7 +6,6 @@ namespace StudyRoomBooking.Core.Services
 {
     public interface IRoomService 
     {
-       Task<IEnumerable<Room>> GetRoomsAsync();
-
+       Task<IEnumerable<Room>> ExecuteService();
     }
 }

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using StudyRoomBooking.Core.FactoryService;
 using StudyRoomBooking.DataAccess.Repository;
-using StudyRoomBooking.Models;
+using StudyRoomBooking.Models.Messages.Request;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.Core.Services
 {
 
-    public class RoomServiceImpl : IRoomService
+    public class RoomServiceImpl : IServiceHandler<EmptyRequest, RoomResponse>
     {
        public readonly IRoomRepository _roomRepository;
         public RoomServiceImpl(IRoomRepository roomRepository)
@@ -14,10 +14,9 @@ namespace StudyRoomBooking.Core.Services
             _roomRepository = roomRepository;
         }
 
-       public async Task<IEnumerable<Room>> GetRoomsAsync()
+        public RoomResponse ExcecuteService(EmptyRequest request)
         {
-           return await _roomRepository.GetRoomsAsyncData();
+           return _roomRepository.GetRooms();
         }
-
     }
 }

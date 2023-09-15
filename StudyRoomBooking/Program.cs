@@ -2,7 +2,10 @@ using StudyRoomBooking.Core.FactoryService;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.DataAccess.Configuration;
 using StudyRoomBooking.DataAccess.Repository;
-    
+using StudyRoomBooking.Models;
+using StudyRoomBooking.Models.Messages.Request;
+using StudyRoomBooking.Models.Messages.Response;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,9 +17,8 @@ builder.Services.AddSwaggerGen();
 
 
 
-builder.Services.AddTransient<IServiceFactory, ServiceFactory>();
 
-builder.Services.AddTransient<IRoomService, RoomServiceImpl>();
+builder.Services.AddTransient<IServiceFactory, ServiceFactory>();
 
 
 #region [DI registration: Self containt dependency injection]            

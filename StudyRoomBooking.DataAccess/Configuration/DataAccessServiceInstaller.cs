@@ -21,6 +21,9 @@ namespace StudyRoomBooking.DataAccess.Configuration
             // Register dependency of StudyRoomBooking.DataAccess
             services.AddTransient<IRoomRepository, RoomRepository>();
 
+            services.AddTransient<RoomRepository>();
+       
+
             return services;
         }
     }

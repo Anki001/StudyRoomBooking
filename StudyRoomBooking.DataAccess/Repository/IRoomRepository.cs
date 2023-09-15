@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudyRoomBooking.Models;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Repository
 {
     public interface IRoomRepository
     {
-     Task<IEnumerable<Room>> GetRoomsAsyncData();
+       RoomResponse GetRooms();
     }
 }

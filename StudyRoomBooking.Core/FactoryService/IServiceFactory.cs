@@ -9,6 +9,9 @@ namespace StudyRoomBooking.Core.FactoryService
 {
     public interface IServiceFactory
     {
-        IRoomService CreateRoomService();
+
+        TResponse ProcessService<TRequest, TResponse>(TRequest request) //roomservice .
+             where TRequest : class
+             where TResponse : class;
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using StudyRoomBooking.Models;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Repository
 {
@@ -16,10 +17,15 @@ namespace StudyRoomBooking.DataAccess.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<Room>> GetRoomsAsyncData()
+        RoomResponse IRoomRepository.GetRooms()
         {
-           return await _context.Rooms.ToListAsync();
-        }
+            
+            var rooms = _context.Rooms.ToList();
 
+            return new RoomResponse
+            {
+                Rooms = rooms
+            };
+        }
     }
 }

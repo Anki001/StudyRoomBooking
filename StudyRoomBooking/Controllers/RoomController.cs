@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.Ocsp;
 using StudyRoomBooking.Core.FactoryService;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Exceptions;
 using StudyRoomBooking.Models;
+using StudyRoomBooking.Models.Messages.Request;
+using StudyRoomBooking.Models.Messages.Response;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StudyRoomBooking.Controllers
 {
@@ -11,8 +16,12 @@ namespace StudyRoomBooking.Controllers
     public class RoomController : ControllerBase
     {
         private readonly IServiceFactory _serviceFactory;
-        public RoomController( IServiceFactory serviceFactory)
+    
+
+
+        public RoomController(IServiceFactory serviceFactory)
         {
+  
             _serviceFactory = serviceFactory;
         }
 
@@ -21,16 +30,14 @@ namespace StudyRoomBooking.Controllers
         {
             try
             {
-                IRoomService roomService = _serviceFactory.CreateRoomService();
+                var roomsResponse =  _serviceFactory.ProcessService<EmptyRequest, RoomResponse>(EmptyRequest.Instance);
 
-                IEnumerable<Room> rooms = await roomService.GetRoomsAsync();
-
-                if (rooms == null || !rooms.Any())
+                if (roomsResponse == null )
                 {
-
                     return NotFound("No rooms found.");
                 }
-                return Ok(rooms);
+
+                return Ok(roomsResponse);
             }
             catch (StudyRoomBookingException ex)
             {

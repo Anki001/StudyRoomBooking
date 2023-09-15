@@ -1,13 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using StudyRoomBooking.Core.Services;
-using StudyRoomBooking.DataAccess;
-using StudyRoomBooking.DataAccess.Repository;
 
 namespace StudyRoomBooking.Core.FactoryService
 {
@@ -15,15 +7,26 @@ namespace StudyRoomBooking.Core.FactoryService
     {
         private readonly IServiceProvider _serviceProvider;
 
+
+
         public ServiceFactory( IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
-        public IRoomService CreateRoomService()
+        public TResponse ProcessService<TRequest,TResponse>(TRequest request) 
+            where TRequest : class
+            where TResponse : class
         {
-            var roomRepository = _serviceProvider.GetService<IRoomRepository>();
-            return new RoomServiceImpl(roomRepository);
+            var service = (IServiceHandler<TRequest, TResponse>) _serviceProvider.GetService(typeof(IServiceHandler<TRequest,TResponse>));
+
+            if(service == null)
+            {
+                throw new NotImplementedException($"No service register for this type : {nameof(TRequest)}");
+            }
+            return service.ExcecuteService(request); //iservice
         }
+
+        
     }
 }
