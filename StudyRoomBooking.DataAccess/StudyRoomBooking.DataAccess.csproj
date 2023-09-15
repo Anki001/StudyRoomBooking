@@ -14,4 +14,8 @@
     <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StudyRoomBooking.Models\StudyRoomBooking.Models.csproj" />
+  </ItemGroup>
+
 </Project>
