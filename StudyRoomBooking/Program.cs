@@ -1,3 +1,5 @@
+using StudyRoomBooking.Core.Services;
+using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
+
+builder.Services.AddScoped<IBookingRegistration, BookingRegistrationService>();
+
+
+
 
 #endregion
 
