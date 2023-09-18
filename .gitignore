@@ -22,3 +22,6 @@
 /StudyRoomBooking.DataAccess.Fixtures/obj
 /StudyRoomBooking.Fixtures.Test/bin/Debug
 /StudyRoomBooking.Fixtures.Test/obj
+/ClientApp/.vscode
+/StudyRoomBooking/StudyRoomBooking.csproj.user
+/StudyRoomBooking/StudyRoomBooking.csproj.user

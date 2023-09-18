@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
@@ -30,7 +31,8 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var isDeployed = builder.Configuration.GetValue<bool>("Settings:IsDeployed");
+if (!isDeployed && app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -39,6 +41,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
+    RequestPath = "/app" // URL path to access the Angular app
+});
 
 app.MapControllers();
 

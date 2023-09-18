@@ -19,11 +19,10 @@ namespace StudyRoomBooking.DataAccess.Configuration
             #endregion
       
             // Register dependency of StudyRoomBooking.DataAccess
-            services.AddTransient<IRoomRepository, RoomRepository>();
+            services.AddTransient<IStudyRoomRepository, StudyRoomRepository>();
 
-            services.AddTransient<RoomRepository>();
+            services.AddTransient<StudyRoomRepository>();
        
-
             return services;
         }
     }
