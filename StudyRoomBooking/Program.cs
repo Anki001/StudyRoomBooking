@@ -1,10 +1,7 @@
-using StudyRoomBooking.Core.FactoryService;
 using StudyRoomBooking.Core.Services;
+using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
-using StudyRoomBooking.DataAccess.Repository;
-using StudyRoomBooking.Models;
-using StudyRoomBooking.Models.Messages.Request;
-using StudyRoomBooking.Models.Messages.Response;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,18 +12,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
-
-builder.Services.AddTransient<IServiceFactory, ServiceFactory>();
-
-
-#region [DI registration: Self containt dependency injection]            
-
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
-#endregion
+builder.Services.AddTransient<IServiceFactory, ServiceHandlerFactory>();
+
+Assembly.GetAssembly(typeof(ServiceHandlerFactory))
+                       .GetTypes()
+                       .Where(a => a.Name.EndsWith("ServiceHandler"))
+                       .Select(a => new { assignedType = a, serviceTypes = a.GetInterfaces().ToList() })
+                       .ToList()
+                       .ForEach(typesToRegister =>
+                       {
+                           typesToRegister.serviceTypes.ForEach(typeToRegister => builder.Services.AddScoped(typeToRegister, typesToRegister.assignedType));
+                       });
 
 var app = builder.Build();
 

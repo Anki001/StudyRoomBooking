@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using StudyRoomBooking.DataAccess;
 using StudyRoomBooking.DataAccess.Repository;
@@ -14,7 +11,7 @@ namespace YourNamespace.Tests.DataAccess.Repository
     public class RoomRepositoryTests
     {
         private ApplicationDbContext _context;
-        private IRoomRepository _roomRepository;
+        private IStudyRoomRepository _roomRepository;
 
         [SetUp]
         public void Setup()
@@ -24,14 +21,14 @@ namespace YourNamespace.Tests.DataAccess.Repository
                 .Options;
 
             _context = new ApplicationDbContext(options);
-            _roomRepository = new RoomRepository(_context);
+            _roomRepository = new StudyRoomRepository(_context);
 
             // Seed some test data into the in-memory database
-            _context.Rooms.AddRange(new List<Room>
+            _context.StudyRooms.AddRange(new List<StudyRoom>
             {
-                new Room { Id = 1, Name = "Room 1", Roomno = "A101", Available = "yes" },
-                new Room { Id = 2, Name = "Room 2", Roomno = "A102", Available = "yes" },
-                new Room { Id = 3, Name = "Room 3", Roomno = "A103", Available = "yes" }
+                new StudyRoom { Id = 1, Name = "Room 1", RoomNumber = "A101", IsAvailable = true },
+                new StudyRoom { Id = 2, Name = "Room 2", RoomNumber = "A102", IsAvailable = true },
+                new StudyRoom { Id = 3, Name = "Room 3", RoomNumber = "A103", IsAvailable = true }
             });
             _context.SaveChanges();
         }
@@ -51,7 +48,7 @@ namespace YourNamespace.Tests.DataAccess.Repository
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOf<RoomResponse>(result);
+            Assert.IsInstanceOf<StudyRoomResponse>(result);
             Assert.IsNotNull(result.Rooms);
             Assert.AreEqual(3, result.Rooms.Count());
         }

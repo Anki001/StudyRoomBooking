@@ -18,4 +18,8 @@
     <ProjectReference Include="..\StudyRoomBooking.Core\StudyRoomBooking.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="StaticFiles\" />
+  </ItemGroup>
+
 </Project>

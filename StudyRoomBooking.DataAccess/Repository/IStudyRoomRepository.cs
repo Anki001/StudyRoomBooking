@@ -8,8 +8,8 @@ using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Repository
 {
-    public interface IRoomRepository
+    public interface IStudyRoomRepository
     {
-       RoomResponse GetRooms();
+       StudyRoomResponse GetRooms();
     }
 }

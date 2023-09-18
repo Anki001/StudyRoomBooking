@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Asn1.Ocsp;
-using StudyRoomBooking.Core.FactoryService;
-using StudyRoomBooking.Core.Services;
+using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.Exceptions;
-using StudyRoomBooking.Models;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace StudyRoomBooking.Controllers
 {
@@ -30,7 +25,7 @@ namespace StudyRoomBooking.Controllers
         {
             try
             {
-                var roomsResponse =  _serviceFactory.ProcessService<EmptyRequest, RoomResponse>(EmptyRequest.Instance);
+                var roomsResponse =  _serviceFactory.ProcessService<EmptyRequest, StudyRoomResponse>(EmptyRequest.Instance);
 
                 if (roomsResponse == null )
                 {

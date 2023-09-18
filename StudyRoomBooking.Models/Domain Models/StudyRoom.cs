@@ -2,12 +2,12 @@
 
 namespace StudyRoomBooking.Models
 {
-    public class Room
+    public class StudyRoom
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-          public string Roomno { get; set; }
-         public string Available { get; set; } 
+          public string RoomNumber { get; set; }
+         public bool IsAvailable { get; set; } 
     }
 }

@@ -2,9 +2,9 @@
 
 namespace StudyRoomBooking.Models.Messages.Response
 {
-    public class RoomResponse
+    public class StudyRoomResponse
     {
-        public IEnumerable<Room> Rooms { get; set; }
+        public IEnumerable<StudyRoom> Rooms { get; set; }
 
     }
 }
