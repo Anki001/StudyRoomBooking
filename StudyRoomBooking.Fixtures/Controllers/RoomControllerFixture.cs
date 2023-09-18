@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
 using StudyRoomBooking.Controllers;
-using StudyRoomBooking.Core.FactoryService;
-using StudyRoomBooking.Exceptions;
+using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
 
@@ -22,25 +20,26 @@ namespace YourNamespace.Tests.Controllers
             _serviceFactoryMock = new Mock<IServiceFactory>();
             _roomController = new RoomController(_serviceFactoryMock.Object);
         }
-
-       
-
+     
         [Test]
         public async Task GetAllRooms_NoRoomsFound_ReturnsNotFound()
         {
             // Arrange
-            _serviceFactoryMock.Setup(factory => factory.ProcessService<EmptyRequest, RoomResponse>(EmptyRequest.Instance))
-                .Returns((RoomResponse)null);
+            var expectedStatusCode = 404;
+            StudyRoomResponse? response = null;
+            _serviceFactoryMock.Setup(factory => factory.ProcessService<EmptyRequest, StudyRoomResponse>(EmptyRequest.Instance))
+                .Returns(response);
 
             // Act
             var result = await _roomController.GetAllRooms() as NotFoundObjectResult;
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(404, result.StatusCode);
-            Assert.AreEqual("No rooms found.", result.Value);
+            Assert.That(result, Is.Not.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.StatusCode, Is.EqualTo(expectedStatusCode));
+                Assert.That(result.Value, Is.EqualTo("No rooms found."));
+            });
         }
-
-        
     }
 }
