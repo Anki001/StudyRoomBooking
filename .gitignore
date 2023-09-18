@@ -25,3 +25,11 @@
 /ClientApp/.vscode
 /StudyRoomBooking/StudyRoomBooking.csproj.user
 /StudyRoomBooking/StudyRoomBooking.csproj.user
+/StudyRoomBooking.Fixtures/bin/Debug/net6.0/CoverletSourceRootsMapping
+/StudyRoomBooking.Fixtures/obj/Debug/net6.0/StudyRoomBooking.Fixtures.GeneratedMSBuildEditorConfig.editorconfig
+/StudyRoomBooking.Fixtures/obj/Debug/net6.0/StudyRoomBooking.Fixtures.csproj.AssemblyReference.cache
+/StudyRoomBooking.Fixtures/obj/Debug/net6.0/StudyRoomBooking.Fixtures.assets.cache
+/StudyRoomBooking.Fixtures/obj/StudyRoomBooking.Fixtures.csproj.nuget.g.props
+/StudyRoomBooking.Fixtures/obj/StudyRoomBooking.Fixtures.csproj.nuget.dgspec.json
+/StudyRoomBooking.Fixtures/obj/project.nuget.cache
+/StudyRoomBooking.Fixtures/obj/project.assets.json
