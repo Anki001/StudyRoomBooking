@@ -5,6 +5,6 @@ namespace StudyRoomBooking.Core.Services.Interfaces
 {
     public interface IRoomDetails
     {
-        Task<Room> GetRoomDetailsById(int id);
+        Task<StudyRoom> GetRoomDetailsById(int id);
     }
 }

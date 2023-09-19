@@ -1,7 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
 using StudyRoomBooking.Core.Services;
-using StudyRoomBooking.DataAccess.Repositorys.Interfaces;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             int roomId = 1;
             var mockRepository = new Mock<IRoomDetailsRepository>();
             mockRepository.Setup(repo => repo.GetRoomDetailsById(roomId))
-                .ReturnsAsync(new Room { Id = roomId, Name = "Room 101",Roomno="room123",Available="Yes" });
+                .ReturnsAsync(new StudyRoom { Id = roomId, Name = "StudyRoom 101",RoomNumber="room123",IsAvailable=true });
             var service = new RoomDetailsService(mockRepository.Object);
 
             // Act
@@ -30,7 +30,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(roomId, result.Id);
-            Assert.AreEqual("Room 101", result.Name);
+            Assert.AreEqual("StudyRoom 101", result.Name);
         }
 
         [Test]

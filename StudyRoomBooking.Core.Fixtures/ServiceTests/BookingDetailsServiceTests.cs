@@ -1,7 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
 using StudyRoomBooking.Core.Services;
-using StudyRoomBooking.DataAccess.Repositorys.Interfaces;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
 using System;
 using System.Collections.Generic;
@@ -26,12 +26,12 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
                 FirstName = "Siva",
                 LastName = "K",
                 Date = DateTime.Now,
-                Room = new Room // Create a new Room object and initialize it
+                StudyRoom = new StudyRoom // Create a new StudyRoom object and initialize it
                 {
                     Id = 101,
                     Name = "room name",
-                    Roomno = "12A",
-                    Available = "Yes"
+                    RoomNumber = "12A",
+                    IsAvailable = true
                 }
             };
 
@@ -46,7 +46,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(bookingId, result.BookingId);
-            Assert.AreEqual(101, result.Room.Id);
+            Assert.AreEqual(101, result.StudyRoom.Id);
             Assert.AreEqual("Siva", result.FirstName);
         }
 

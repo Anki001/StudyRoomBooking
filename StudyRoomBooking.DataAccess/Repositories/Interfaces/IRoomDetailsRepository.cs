@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudyRoomBooking.DataAccess.Repositorys.Interfaces
+namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
     public interface IRoomDetailsRepository
     {
-        Task<Room> GetRoomDetailsById(int Id);
+        Task<StudyRoom> GetRoomDetailsById(int Id);
     }
 }

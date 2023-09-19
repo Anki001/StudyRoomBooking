@@ -35,12 +35,12 @@ namespace StudyRoomBooking.Fixtures.ControllerTests
                 Email = "siva123@gmail.com",
                 Date = DateTime.Now,
                 
-                Room = new Room
+                StudyRoom = new StudyRoom
                 {
                     Id = 1,
                     Name = "Villa",
-                    Roomno = "123A",
-                    Available = "Yes"
+                    RoomNumber = "123A",
+                    IsAvailable = true
                 }
             };
             _bookingDetailsMock.Setup(b => b.GetBookingDetailsById(bookingId)).ReturnsAsync(expectedBooking);

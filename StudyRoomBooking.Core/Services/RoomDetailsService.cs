@@ -1,5 +1,5 @@
 ﻿using StudyRoomBooking.Core.Services.Interfaces;
-using StudyRoomBooking.DataAccess.Repositorys.Interfaces;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
 using System.Threading.Tasks;
 
@@ -14,7 +14,7 @@ namespace StudyRoomBooking.Core.Services
             _repository = repository;
         }
 
-        public async Task<Room> GetRoomDetailsById(int id)
+        public async Task<StudyRoom> GetRoomDetailsById(int id)
         {
             if(id <= 0)
             {

@@ -1,7 +1,7 @@
 ﻿using StudyRoomBooking.Models.DomainModels;
 using System.Threading.Tasks;
 
-namespace StudyRoomBooking.DataAccess.Repositorys.Interfaces
+namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
     public interface IBookingDetailsRepository
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudyRoomBooking.DataAccess.Repositorys.Interfaces;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
 using System.Threading.Tasks;
 
-namespace StudyRoomBooking.DataAccess.Repositorys
+namespace StudyRoomBooking.DataAccess.Repositories
 {
     public class BookingDetailsRepository :IBookingDetailsRepository
     {
@@ -22,7 +22,7 @@ namespace StudyRoomBooking.DataAccess.Repositorys
             }
 
             return await _context.BookingDetails
-                                  .Include(x => x.Room)
+                                  .Include(x => x.StudyRoom)
                                   .FirstOrDefaultAsync(b => b.BookingId == id);
         }
 

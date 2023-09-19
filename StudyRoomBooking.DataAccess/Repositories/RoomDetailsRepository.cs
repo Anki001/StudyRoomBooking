@@ -1,8 +1,8 @@
-﻿using StudyRoomBooking.DataAccess.Repositorys.Interfaces;
+﻿using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
 using System.Threading.Tasks;
 
-namespace StudyRoomBooking.DataAccess.Repositorys
+namespace StudyRoomBooking.DataAccess.Repositories
 {
     public class RoomDetailsRepository :IRoomDetailsRepository 
     {
@@ -14,13 +14,13 @@ namespace StudyRoomBooking.DataAccess.Repositorys
         }
 
      
-        public async Task<Room> GetRoomDetailsById(int id)
+        public async Task<StudyRoom> GetRoomDetailsById(int id)
         {
             if (id <= 0)
             {
                 return null;
             }
-            return await _context.FindAsync<Room>(id);
+            return await _context.FindAsync<StudyRoom>(id);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
-using StudyRoomBooking.DataAccess.Repositorys;
+using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.Models.DomainModels;
 using System;
 using System.Collections.Generic;
@@ -30,10 +30,10 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
         {
             // Arrange
             int roomId = 1;
-            var roomDetails = new Room { Id = roomId, Name = "Villa",Roomno = "a1223", Available = "Yes" };
+            var roomDetails = new StudyRoom { Id = roomId, Name = "Villa",RoomNumber = "a1223", IsAvailable = true };
 
             // Setup the mock DbContext to return the roomDetails when FindAsync is called
-            _mockContext.Setup(c => c.FindAsync<Room>(roomId)).ReturnsAsync(roomDetails);
+            _mockContext.Setup(c => c.FindAsync<StudyRoom>(roomId)).ReturnsAsync(roomDetails);
 
             // Act
             var result = await _repository.GetRoomDetailsById(roomId);

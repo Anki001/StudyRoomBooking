@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using StudyRoomBooking.DataAccess.Repositorys;
+using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.Models.DomainModels;
 
 namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
@@ -36,8 +36,8 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
         private void MockTestData()
         {
             _dbContext.BookingDetails.AddRange(
-                new BookingDetails { BookingId = 1, FirstName = "Siva", LastName = "K", Date = DateTime.Now, Room = new Room { Id = 101, Name = "Villa", Roomno = "a1223", Available = "Yes" } },
-                new BookingDetails { BookingId = 2, FirstName = "John", LastName = "Doe", Date = DateTime.Now, Room = new Room { Id = 102, Name = "Apartment", Roomno = "b456", Available = "No" } }
+                new BookingDetails { BookingId = 1, FirstName = "Siva", LastName = "K", Date = DateTime.Now, StudyRoom = new StudyRoom { Id = 101, Name = "Villa", RoomNumber = "a1223", IsAvailable = true } },
+                new BookingDetails { BookingId = 2, FirstName = "John", LastName = "Doe", Date = DateTime.Now, StudyRoom = new StudyRoom { Id = 102, Name = "Apartment", RoomNumber = "b456", IsAvailable = false } }
             );
 
             _dbContext.SaveChanges();
@@ -56,8 +56,8 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
             Assert.IsNotNull(result);
             Assert.AreEqual(bookingId, result.BookingId);
             Assert.AreEqual("Siva", result.FirstName);
-            Assert.IsNotNull(result.Room); // Ensure Room property is loaded
-            Assert.AreEqual("Villa", result.Room.Name);
+            Assert.IsNotNull(result.StudyRoom); // Ensure StudyRoom property is loaded
+            Assert.AreEqual("Villa", result.StudyRoom.Name);
         }
 
         [Test]

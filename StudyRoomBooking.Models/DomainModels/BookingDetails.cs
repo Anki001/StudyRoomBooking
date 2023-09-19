@@ -12,6 +12,6 @@ namespace StudyRoomBooking.Models.DomainModels
         public string LastName { get; set; }
         public string Email { get; set; }
         public DateTime Date { get; set; }
-        public Room Room { get; set; }
+        public StudyRoom StudyRoom { get; set; }
     }
 }
