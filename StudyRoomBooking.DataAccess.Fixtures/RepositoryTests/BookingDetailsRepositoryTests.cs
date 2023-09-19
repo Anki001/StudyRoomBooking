@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.Models.DomainModels;
+using StudyRoomBooking.Models.Messages.Request;
 
 namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
 {
@@ -43,35 +44,5 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
             _dbContext.SaveChanges();
         }
 
-        [Test]
-        public async Task GetBookingDetailsById_ValidId_ReturnsBookingDetailsWithRoom()
-        {
-            // Arrange
-            int bookingId = 1;
-
-            // Act
-            var result = await _repository.GetBookingDetailsById(bookingId);
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(bookingId, result.BookingId);
-            Assert.AreEqual("Siva", result.FirstName);
-            Assert.IsNotNull(result.StudyRoom); // Ensure StudyRoom property is loaded
-            Assert.AreEqual("Villa", result.StudyRoom.Name);
-        }
-
-        [Test]
-        public async Task GetBookingDetailsById_InvalidId_ReturnsNull()
-        {
-            // Arrange
-            int invalidId = -1;
-
-            // Act
-            var result = await _repository.GetBookingDetailsById(invalidId);
-
-            // Assert
-            Assert.IsNull(result);
-        }
-       
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudyRoomBooking.DataAccess.Repositories.Interfaces;
-using StudyRoomBooking.Models.DomainModels;
-using System.Threading.Tasks;
+using StudyRoomBooking.Models.Messages.Response;
+using System.Linq;
 
 namespace StudyRoomBooking.DataAccess.Repositories
 {
@@ -13,17 +13,21 @@ namespace StudyRoomBooking.DataAccess.Repositories
         {
             _context = context;
         }
-
-        public async Task<BookingDetails> GetBookingDetailsById(int id)
+        BookingDetailsResponse IBookingDetailsRepository.GetBookingDetailsById(int id)
         {
             if (id <= 0)
             {
                 return null;
             }
-
-            return await _context.BookingDetails
-                                  .Include(x => x.StudyRoom)
-                                  .FirstOrDefaultAsync(b => b.BookingId == id);
+            var booking = _context.BookingDetails.Include(x=>x.StudyRoom).FirstOrDefault(b=>b.BookingId == id);
+            if (booking == null)
+            {
+                return null;
+            }
+            return new BookingDetailsResponse
+            {
+                BookingDetails = booking,
+            };
         }
 
     }

@@ -16,8 +16,6 @@ builder.Services.AddSwaggerGen();
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
-builder.Services.AddScoped<IBookingDetails, BookingDetailsService>();
-builder.Services.AddScoped<IRoomDetails,RoomDetailsService>();
 builder.Services.AddTransient<IServiceFactory, ServiceHandlerFactory>();
 
 Assembly.GetAssembly(typeof(ServiceHandlerFactory))

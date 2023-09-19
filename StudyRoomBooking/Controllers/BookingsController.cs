@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudyRoomBooking.Core.Services.Interfaces;
+using StudyRoomBooking.Exceptions;
+using StudyRoomBooking.Models.Messages.Request;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.Controllers
 {
@@ -7,33 +10,34 @@ namespace StudyRoomBooking.Controllers
     [ApiController]
     public class BookingsController : ControllerBase
     {
-        private readonly IBookingDetails _bookingDetails;
-        public BookingsController(IBookingDetails bookingDetails)
+        private readonly IServiceFactory _serviceFactory;
+        public BookingsController(IServiceFactory serviceFactory)
         {
-            _bookingDetails = bookingDetails;
+            _serviceFactory = serviceFactory;
         }
-
-       
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookingDetailsById(int id)
         {
             try
             {
-                if(id <=0)
+                if (id <= 0)
                 {
                     return NotFound($"Given ID {id} is Invalid");
                 }
-                var booking = await _bookingDetails.GetBookingDetailsById(id);
-                if (booking == null)
-                {
-                    return NotFound($"Booking with ID {id} not found.");
-                }
-                return Ok(booking);
-            }catch (Exception ex)
-            {
-                return BadRequest($"An error occurred while retrieving booking details:{ex.Message}");
-            }
+                var request = new BookingRequest { Id = id };
+                var bookingResponse = _serviceFactory.ProcessService<BookingRequest, BookingDetailsResponse>(request);
 
+                if (bookingResponse == null)
+                {
+                    return NotFound($"No bookings found with {id}.");
+                }
+
+                return Ok(bookingResponse);
+            }
+            catch (StudyRoomBookingException ex)
+            {
+                return BadRequest($"Study StudyRoom Booking Error: {ex.Message}");
+            }
         }
     }
 }
