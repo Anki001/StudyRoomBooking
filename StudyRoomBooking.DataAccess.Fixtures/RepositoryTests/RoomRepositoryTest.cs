@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using StudyRoomBooking.DataAccess;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.DataAccess.Repository;
 using StudyRoomBooking.Models;
 using StudyRoomBooking.Models.Messages.Response;
@@ -50,7 +51,7 @@ namespace YourNamespace.Tests.DataAccess.Repository
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<StudyRoomResponse>(result);
             Assert.IsNotNull(result.Rooms);
-            Assert.AreEqual(3, result.Rooms.Count());
+            Assert.That(result.Rooms.Count(), Is.EqualTo(3));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.DataAccess.Repository;
 
 namespace StudyRoomBooking.DataAccess.Configuration

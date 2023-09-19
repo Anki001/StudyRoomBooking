@@ -4,6 +4,6 @@
         where TRequest : class
         where TResponse : class
     {
-        TResponse ExcecuteService(TRequest request);
+        TResponse ExcecuteService(TRequest request); //now we know type of service
     }
 }
