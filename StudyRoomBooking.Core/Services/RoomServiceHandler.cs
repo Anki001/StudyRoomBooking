@@ -1,5 +1,5 @@
 ﻿using StudyRoomBooking.Core.Services.Interfaces;
-using StudyRoomBooking.DataAccess.Repository;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
 

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using StudyRoomBooking.Models;
 using StudyRoomBooking.Models.Messages.Response;
 
-namespace StudyRoomBooking.DataAccess.Repository
+namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
     public interface IStudyRoomRepository
     {
-       StudyRoomResponse GetRooms();
+        StudyRoomResponse GetRooms();
     }
 }

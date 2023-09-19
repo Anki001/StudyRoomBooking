@@ -57,3 +57,5 @@
 /StudyRoomBooking.Fixtures/bin/Debug/net6.0/appsettings.json
 /StudyRoomBooking.Fixtures/bin/Debug/net6.0
 /StudyRoomBooking.Fixtures/obj
+/StudyRoomBooking/appsettings.json
+/StudyRoomBooking.DataAccess/Migrations
