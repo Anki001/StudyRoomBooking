@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudyRoomBooking.DataAccess.Repositorys;
+using StudyRoomBooking.DataAccess.Repositorys.Interfaces;
 
 namespace StudyRoomBooking.DataAccess.Configuration
 {
@@ -18,7 +20,8 @@ namespace StudyRoomBooking.DataAccess.Configuration
             #endregion
 
             // Register dependency of StudyRoomBooking.DataAccess
-
+            services.AddScoped<IRoomDetailsRepository, RoomDetailsRepository>();
+            services.AddScoped<IBookingDetailsRepository,BookingDetailsRepository>();
             return services;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StudyRoomBooking.Models.DomainModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,8 +12,10 @@ namespace StudyRoomBooking.DataAccess
         {
 
         }
-        
+
         // Db set properties
+        public DbSet<BookingDetails> BookingDetails { get; set; }
+        public DbSet<Room> RoomDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

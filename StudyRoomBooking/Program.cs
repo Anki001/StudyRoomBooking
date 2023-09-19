@@ -1,3 +1,5 @@
+using StudyRoomBooking.Core.Services;
+using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
 #endregion
+builder.Services.AddScoped<IBookingDetails, BookingDetailsService>();
+builder.Services.AddScoped<IRoomDetails,RoomDetailsService>();
 
 var app = builder.Build();
 
