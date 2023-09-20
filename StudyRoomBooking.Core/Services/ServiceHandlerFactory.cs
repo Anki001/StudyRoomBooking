@@ -22,7 +22,7 @@ namespace StudyRoomBooking.Core.Services
             {
                 throw new NotImplementedException($"No service register for this type : {nameof(TRequest)}");
             }
-            return service.ExcecuteService(request); //iservice
+            return service.ExecuteService(request); //iservice
         }
     }
 }

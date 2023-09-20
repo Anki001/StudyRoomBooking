@@ -20,7 +20,6 @@ namespace StudyRoomBooking.DataAccess.Configuration
             #endregion
       
             // Register dependency of StudyRoomBooking.DataAccess
-            services.AddScoped<IRoomDetailsRepository, RoomDetailsRepository>();
             services.AddScoped<IBookingDetailsRepository,BookingDetailsRepository>();
             services.AddTransient<IStudyRoomRepository, StudyRoomRepository>();
 

@@ -5,10 +5,10 @@ using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
 
-namespace StudyRoomBooking.Core.Fixtures.ServiceTests
+namespace StudyRoomBooking.Core.Fixtures.Services
 {
     [TestFixture]
-    public class ServiceHandlerFactoryTests
+    public class ServiceHandlerFactoryFixture
     {
         [Test]
         public void ProcessService_Returns_ServiceResponse()
@@ -18,14 +18,14 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             var serviceHandlerFactory = new ServiceHandlerFactory(mockServiceProvider.Object);
 
             var request = new EmptyRequest();
-            var response = new StudyRoomResponse(); 
+            var response = new StudyRoomResponse();
 
             // Mock the service handler
             var mockServiceHandler = new Mock<IServiceHandler<EmptyRequest, StudyRoomResponse>>();
-            mockServiceHandler.Setup(handler => handler.ExcecuteService(request)).Returns(response);
+            mockServiceHandler.Setup(handler => handler.ExecuteService(request)).Returns(response);
 
             mockServiceProvider
-                .Setup(provider => provider.GetService(typeof( IServiceHandler < EmptyRequest, StudyRoomResponse >)))
+                .Setup(provider => provider.GetService(typeof(IServiceHandler<EmptyRequest, StudyRoomResponse>)))
                 .Returns(mockServiceHandler.Object);
 
             // Act

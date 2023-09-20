@@ -9,7 +9,7 @@ using StudyRoomBooking.Models.Messages.Response;
 namespace YourNamespace.Tests.Controllers
 {
     [TestFixture]
-    public class RoomControllerTests
+    public class StudyRoomControllerFixture
     {
         private RoomController _roomController;
         private Mock<IServiceFactory> _serviceFactoryMock;
