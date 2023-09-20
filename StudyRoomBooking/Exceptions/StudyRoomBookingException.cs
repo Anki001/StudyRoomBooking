@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StudyRoomBooking.Exceptions
+﻿namespace StudyRoomBooking.Exceptions
 {
     public class StudyRoomBookingException : ApplicationException
     {
