@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using StudyRoomBooking.DataAccess;
-using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.DataAccess.Repositories;
-using StudyRoomBooking.Models.Messages.Response;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
 {
@@ -51,7 +50,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
             Assert.IsNotNull(result);
             Assert.IsInstanceOf<StudyRoomResponse>(result);
             Assert.IsNotNull(result.Rooms);
-            Assert.AreEqual(3, result.Rooms.Count());
+            Assert.That(result.Rooms.Count(), Is.EqualTo(3));
         }
     }
 }
