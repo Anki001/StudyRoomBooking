@@ -1,1 +1,30 @@
-<p>room-screen works!</p>
+
+  <table class="table ">
+    <thead>
+      <tr>
+        <th>Sl.no</th>
+        <th >Name</th>
+        <th >RoomNo</th>
+        <th >Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of getRooms(); let i = index">
+        <th>{{ i + 1 }}</th>
+        <td>{{ room.name }}</td>
+        <td>{{ room.roomNumber }}</td>
+        <td>
+          <i class="true-icon" *ngIf="room.isAvailable === true">
+            <i class="fa-solid fa-door-open fa-xl"></i>
+          </i>
+          <i class="false-icon" *ngIf="room.isAvailable === false">
+            <i class="fa-solid fa-door-closed  fa-xl"></i>
+          </i>
+        </td>
+      </tr>
+    </tbody>
+    <div class="card">
+        <p *ngIf="!getRooms() || getRooms().length <= 0">No Record Found</p>
+    </div>
+  </table>
+  
