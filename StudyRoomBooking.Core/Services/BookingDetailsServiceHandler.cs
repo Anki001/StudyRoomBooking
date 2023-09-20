@@ -12,7 +12,7 @@ namespace StudyRoomBooking.Core.Services
         {
             _repository = repository;
         }
-        public BookingDetailsResponse ExcecuteService(BookingRequest request)
+        public BookingDetailsResponse ExecuteService(BookingRequest request)
         {
             return _repository.GetBookingDetailsById(request.Id);
         }
