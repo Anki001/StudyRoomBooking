@@ -29,7 +29,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             _bookingRegistrationMock.Setup(x => x.ValidateUserRequest(request.BookingDetails)).Returns(false);
 
             // Act
-            var response = _handler.ExcecuteService(request);
+            var response = _handler.ExecuteService(request);
 
             // Assert
             Assert.That(response.BookingId, Is.EqualTo(-1));
@@ -44,7 +44,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             _bookingRegistrationMock.Setup(x => x.IsRoomAvilable()).Returns(false);
 
             // Act
-            var response = _handler.ExcecuteService(request);
+            var response = _handler.ExecuteService(request);
 
             // Assert
             Assert.That(response.BookingId, Is.EqualTo(0));
@@ -62,7 +62,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             _bookingRegistrationMock.Setup(x => x.BookStudyRoom(request.BookingDetails)).Returns(expectedBookingId);
 
             // Act
-            var response = _handler.ExcecuteService(request);
+            var response = _handler.ExecuteService(request);
 
             // Assert
             Assert.That(response.BookingId, Is.EqualTo(expectedBookingId));

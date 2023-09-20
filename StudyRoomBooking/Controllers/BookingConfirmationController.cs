@@ -8,10 +8,10 @@ namespace StudyRoomBooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingsController : ControllerBase
+    public class BookingConfirmationController : ControllerBase
     {
         private readonly IServiceFactory _serviceFactory;
-        public BookingsController(IServiceFactory serviceFactory)
+        public BookingConfirmationController(IServiceFactory serviceFactory)
         {
             _serviceFactory = serviceFactory;
         }

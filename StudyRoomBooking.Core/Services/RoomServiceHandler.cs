@@ -13,9 +13,10 @@ namespace StudyRoomBooking.Core.Services
             _roomRepository = roomRepository;
         }
 
-        public StudyRoomResponse ExcecuteService(EmptyRequest request)
+        public StudyRoomResponse ExecuteService(EmptyRequest request)
         {
            return _roomRepository.GetRooms();
         }
     }
 }
+

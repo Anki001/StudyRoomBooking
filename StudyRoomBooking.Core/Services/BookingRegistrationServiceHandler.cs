@@ -15,7 +15,7 @@ namespace StudyRoomBooking.Core.Services
             _bookingRegistration = bookingRegistration;
             
         }
-        public BookingRegistrationReponse ExcecuteService(BookingRegistrationRequest request)
+        public BookingRegistrationReponse ExecuteService(BookingRegistrationRequest request)
         {
             var bookingResponse=new BookingRegistrationReponse();
             bool isValid = _bookingRegistration.ValidateUserRequest(request.BookingDetails);
@@ -39,6 +39,6 @@ namespace StudyRoomBooking.Core.Services
            
         }
 
-     
+        
     }
 }

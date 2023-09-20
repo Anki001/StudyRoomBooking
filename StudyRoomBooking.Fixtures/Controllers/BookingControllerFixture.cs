@@ -11,13 +11,13 @@ namespace StudyRoomBooking.Fixtures.Controllers
 {
     public class BookingControllerFixture
     {
-        private BookingsController _bookingController;
+        private BookingConfirmationController _bookingController;
         private Mock<IServiceFactory> _serviceFactoryMock;
         [SetUp]
         public void Setup()
         {
             _serviceFactoryMock = new Mock<IServiceFactory>();
-            _bookingController = new BookingsController(_serviceFactoryMock.Object);
+            _bookingController = new BookingConfirmationController(_serviceFactoryMock.Object);
         }
 
         [Test]

@@ -4,6 +4,6 @@
         where TRequest : class
         where TResponse : class
     {
-        TResponse ExcecuteService(TRequest request);
+        TResponse ExecuteService(TRequest request);
     }
 }

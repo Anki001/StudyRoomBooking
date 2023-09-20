@@ -5,10 +5,10 @@ using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
 
-namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
+namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 {
     [TestFixture]
-    public class BookingRegistrationRepoFixture:IDisposable
+    public class BookingRegistrationRepoFixture : IDisposable
     {
         private ApplicationDbContext _context;
         private BookingRegistrationRepository _bookingRegistrationRepository; // Assuming the method is in a service called YourService
@@ -19,7 +19,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(databaseName: "StudyRoomBooking").Options;
             _context = new ApplicationDbContext(options);
-            _bookingRegistrationRepository =new  BookingRegistrationRepository(_context);
+            _bookingRegistrationRepository = new BookingRegistrationRepository(_context);
 
         }
         private void MockData()
@@ -45,10 +45,10 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
             var bookingDetails = new BookingDetails()
             {
                 BookingId = 1,
-                FirstName="Rakesh",
-                LastName="Pernati",
-                Email="rakesh@gmail.com",
-                Date=DateTime.Now
+                FirstName = "Rakesh",
+                LastName = "Pernati",
+                Email = "rakesh@gmail.com",
+                Date = DateTime.Now
             };
 
 
@@ -57,7 +57,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
 
             // Assert
             Assert.That(result, Is.EqualTo(bookingDetails.BookingId));
-           
+
         }
 
 
@@ -79,7 +79,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
             var result = _bookingRegistrationRepository.IsAvilable();
 
             // Assert
-            Assert.That(result,Is.Not.Null);
+            Assert.That(result, Is.Not.Null);
             Assert.That(result.IsAvailable, Is.EqualTo(studyRoom.IsAvailable));
         }
 
@@ -87,7 +87,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
         public void IsAvailable_NoRoomAvailable_ReturnsNull()
         {
 
-           
+
             // Act
             var result = _bookingRegistrationRepository.IsAvilable();
 
