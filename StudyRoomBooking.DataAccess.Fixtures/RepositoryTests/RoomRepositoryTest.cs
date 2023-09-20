@@ -1,13 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using StudyRoomBooking.DataAccess;
-using StudyRoomBooking.DataAccess.Repositories.Interfaces;
-using StudyRoomBooking.DataAccess.Repository;
-using StudyRoomBooking.Models;
-using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.DataAccess.Repositories;
-using StudyRoomBooking.Models.Messages.Response;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
 {
