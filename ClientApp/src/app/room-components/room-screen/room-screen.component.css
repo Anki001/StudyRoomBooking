@@ -49,4 +49,18 @@
     animation: fadeIn 0.5s ease;
   }
   
- 
+  .card {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust the height as needed */
+    background-color: #f0f0f0; /* Set your desired background color */
+    border: 1px solid #ccc; /* Add a border if desired */
+    border-radius: 10px; /* Add rounded corners if desired */
+}
+
+.card p {
+    font-size: 24px; /* Set your desired font size */
+    color: #333; /* Set your desired text color */
+}

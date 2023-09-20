@@ -23,8 +23,8 @@
         </td>
       </tr>
     </tbody>
-    <div class="card">
-        <p *ngIf="!getRooms() || getRooms().length <= 0">No Record Found</p>
-    </div>
+   
   </table>
-  
+  <div class="card" *ngIf="!getRooms() || getRooms().length <= 0">
+    <p >No Record Found</p>
+</div>
