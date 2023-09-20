@@ -8,31 +8,31 @@ namespace StudyRoomBooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : ControllerBase
+    public class BookingsController : ControllerBase
     {
         private readonly IServiceFactory _serviceFactory;
-    
-
-
-        public RoomController(IServiceFactory serviceFactory)
+        public BookingsController(IServiceFactory serviceFactory)
         {
-  
             _serviceFactory = serviceFactory;
         }
-
-        [HttpGet("GetAllRooms")]
-        public async Task<IActionResult> GetAllRooms()
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBookingDetailsById(int id)
         {
             try
             {
-                var roomsResponse =  _serviceFactory.ProcessService<EmptyRequest, StudyRoomResponse>(EmptyRequest.Instance);
-
-                if (roomsResponse == null )
+                if (id <= 0)
                 {
-                    return NotFound("No rooms found.");
+                    return NotFound($"Given ID {id} is Invalid");
+                }
+                var request = new BookingRequest { Id = id };
+                var bookingResponse = _serviceFactory.ProcessService<BookingRequest, BookingDetailsResponse>(request);
+
+                if (bookingResponse == null)
+                {
+                    return NotFound($"No bookings found with {id}.");
                 }
 
-                return Ok(roomsResponse);
+                return Ok(bookingResponse);
             }
             catch (StudyRoomBookingException ex)
             {

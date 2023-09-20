@@ -2,7 +2,7 @@
 using StudyRoomBooking.Models.Messages.Response;
 using System.Linq;
 
-namespace StudyRoomBooking.DataAccess.Repository
+namespace StudyRoomBooking.DataAccess.Repositories
 {
 
     public  class StudyRoomRepository : IStudyRoomRepository

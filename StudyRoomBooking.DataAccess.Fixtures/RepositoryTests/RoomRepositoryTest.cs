@@ -4,9 +4,12 @@ using StudyRoomBooking.DataAccess;
 using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.DataAccess.Repository;
 using StudyRoomBooking.Models;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
+using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.Models.Messages.Response;
+using StudyRoomBooking.Models.DomainModels;
 
-namespace YourNamespace.Tests.DataAccess.Repository
+namespace StudyRoomBooking.DataAccess.Fixtures.RepositoryTests
 {
     [TestFixture]
     public class RoomRepositoryTests
@@ -27,9 +30,9 @@ namespace YourNamespace.Tests.DataAccess.Repository
             // Seed some test data into the in-memory database
             _context.StudyRooms.AddRange(new List<StudyRoom>
             {
-                new StudyRoom { Id = 1, Name = "Room 1", RoomNumber = "A101", IsAvailable = true },
-                new StudyRoom { Id = 2, Name = "Room 2", RoomNumber = "A102", IsAvailable = true },
-                new StudyRoom { Id = 3, Name = "Room 3", RoomNumber = "A103", IsAvailable = true }
+                new StudyRoom { Id = 1, Name = "StudyRoom 1", RoomNumber = "A101", IsAvailable = true },
+                new StudyRoom { Id = 2, Name = "StudyRoom 2", RoomNumber = "A102", IsAvailable = true },
+                new StudyRoom { Id = 3, Name = "StudyRoom 3", RoomNumber = "A103", IsAvailable = true }
             });
             _context.SaveChanges();
         }

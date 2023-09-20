@@ -1,15 +1,14 @@
-﻿using System;
+﻿using StudyRoomBooking.Models.DomainModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StudyRoomBooking.Models;
-using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
-    public interface IStudyRoomRepository
+    public interface IRoomDetailsRepository
     {
-        StudyRoomResponse GetRooms();
+        Task<StudyRoom> GetRoomDetailsById(int Id);
     }
 }

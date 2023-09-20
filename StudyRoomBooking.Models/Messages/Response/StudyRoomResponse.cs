@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using StudyRoomBooking.Models.DomainModels;
 
 namespace StudyRoomBooking.Models.Messages.Response
 {
