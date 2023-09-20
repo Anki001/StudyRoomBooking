@@ -15,10 +15,10 @@
         <td>{{ room.roomNumber }}</td>
         <td>
           <i class="true-icon" *ngIf="room.isAvailable === true">
-            <i class="fa-solid fa-door-open fa-xl"></i>
+           <b>Yes</b>
           </i>
           <i class="false-icon" *ngIf="room.isAvailable === false">
-            <i class="fa-solid fa-door-closed  fa-xl"></i>
+           <b>No</b>
           </i>
         </td>
       </tr>

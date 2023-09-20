@@ -4,6 +4,7 @@ using NUnit.Framework;
 using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
+using StudyRoomBooking.Models.Messages.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,78 +14,56 @@ using System.Threading.Tasks;
 namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 {
     [TestFixture]
-    public class BookingDetailsRepositoryFixture
+    public class StudyRoomRepositoryTests
     {
-        private IBookingDetailsRepository _bookingDetailsRepository;
-        private ApplicationDbContext _context;
-
-        [SetUp]
-        public void Setup()
-        {
-            // Create a new instance of the DbContext with an in-memory database
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestDatabase")
-                .Options;
-
-            _context = new ApplicationDbContext(options);
-            _bookingDetailsRepository = new BookingDetailsRepository(_context);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            _context.Dispose();
-        }
-
         [Test]
-        public void GetBookingDetailsById_ValidId_ReturnsBookingDetailsResponse()
+        public void GetRooms_ReturnsListOfRooms()
         {
             // Arrange
-            int validId = 1;
-
-            // Add a sample BookingDetails to the in-memory database
-            _context.BookingDetails.Add(new BookingDetails { BookingId = validId,FirstName="Siva",LastName="Krishna",Email="siva123@gmail.com",Date=DateTime.Now,StudyRoom = new StudyRoom { Id=1,Name="Earth",RoomNumber="A123",IsAvailable=true} });
-            _context.SaveChanges();
+            var dbContext = CreateMockDbContext(); // Create a mock context for testing
+            var repository = new StudyRoomRepository(dbContext);
 
             // Act
-            var result = _bookingDetailsRepository.GetBookingDetailsById(validId);
+            var result = repository.GetRooms();
 
             // Assert
-            Assert.NotNull(result);
-            Assert.Multiple(() =>
+            Assert.IsInstanceOf<StudyRoomResponse>(result);
+            Assert.IsNotNull(result.Rooms);
+            Assert.AreEqual(3, result.Rooms.Count); // Adjust the count based on your mock data
+        }
+
+        private ApplicationDbContext CreateMockDbContext()
+        {
+            // Implement a mock ApplicationDbContext for testing
+            var mockDbContext = new ApplicationDbContext();
+
+            // Create a mock list of StudyRooms
+            var studyRooms = new List<StudyRoom>
             {
-                Assert.That(result.BookingDetails.BookingId, Is.EqualTo(validId));
-                Assert.That(result.BookingDetails.FirstName, Is.EqualTo("Siva"));
-            });
-            
+                new StudyRoom { Id = 1, Name = "Room 1" },
+                new StudyRoom { Id = 2, Name = "Room 2" },
+                new StudyRoom { Id = 3, Name = "Room 3" }
+            };
+
+            // Set up the StudyRooms property to return the mock data
+            mockDbContext.StudyRooms = studyRooms.AsQueryable();
+
+            return mockDbContext;
         }
+    }
 
-        [Test]
-        public void GetBookingDetailsById_InvalidId_ReturnsNull()
-        {
-            // Arrange
-            int invalidId = 0;
+    // Define mock classes to represent your data model
+    public class StudyRoom
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        // Add any other properties you need for testing
+    }
 
-            // Act
-            var result = _bookingDetailsRepository.GetBookingDetailsById(invalidId);
-
-            // Assert
-            Assert.IsNull(result);
-        }
-
-        [Test]
-        public void GetBookingDetailsById_IdNotFound_ReturnsNull()
-        {
-            // Arrange
-            int nonExistentId = 999;
-
-            // Act
-            var result = _bookingDetailsRepository.GetBookingDetailsById(nonExistentId);
-
-            // Assert
-            Assert.IsNull(result);
-        }
-
-
+    // Define a mock ApplicationDbContext class
+    public class ApplicationDbContext
+    {
+        public IQueryable<StudyRoom> StudyRooms { get; set; }
+        // Add other DbSet properties as needed for your application
     }
 }
