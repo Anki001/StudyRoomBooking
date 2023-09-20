@@ -5,10 +5,10 @@ using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
 
-namespace StudyRoomBooking.Core.Fixtures.ServiceTests
+namespace StudyRoomBooking.Core.Fixtures.Services
 {
     [TestFixture]
-    public class RoomServiceHandlerTests
+    public class RoomServiceHandlerFixture
     {
         [Test]
         public void ExecuteService_Returns_RoomResponse()
@@ -18,7 +18,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             var roomServiceHandler = new RoomServiceHandler(mockRoomRepository.Object);
             var emptyRequest = new EmptyRequest();
 
-            var expectedResponse = new StudyRoomResponse{};
+            var expectedResponse = new StudyRoomResponse { };
 
             mockRoomRepository.Setup(repo => repo.GetRooms()).Returns(expectedResponse);
 

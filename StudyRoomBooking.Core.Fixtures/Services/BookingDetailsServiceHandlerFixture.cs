@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace StudyRoomBooking.Core.Fixtures.Services
 {
     [TestFixture]
-    public class BookingDetailsSeriviceFixture
+    public class BookingDetailsServiceHandlerFixture
     {
         [Test]
         public void ExecuteService_ValidBookingRequest_ReturnsBookingDetailsResponse()
