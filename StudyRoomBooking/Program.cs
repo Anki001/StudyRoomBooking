@@ -1,6 +1,10 @@
+using Microsoft.Extensions.FileProviders;
+using StudyRoomBooking.Core.Helpers;
+using StudyRoomBooking.Core.Helpers.Intefaces;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,22 +15,32 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-#region [DI registration: Self containt dependency injection]            
-
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
-builder.Services.AddScoped<IBookingRegistration, BookingRegistrationService>();
+builder.Services.AddScoped<IBookingRegistrationHelper, BookingRegistrationService>();
 
 
 
 
-#endregion
+
+builder.Services.AddTransient<IServiceFactory, ServiceHandlerFactory>();
+
+Assembly.GetAssembly(typeof(ServiceHandlerFactory))
+                       .GetTypes()
+                       .Where(a => a.Name.EndsWith("ServiceHandler"))
+                       .Select(a => new { assignedType = a, serviceTypes = a.GetInterfaces().ToList() })
+                       .ToList()
+                       .ForEach(typesToRegister =>
+                       {
+                           typesToRegister.serviceTypes.ForEach(typeToRegister => builder.Services.AddScoped(typeToRegister, typesToRegister.assignedType));
+                       });
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var isDeployed = builder.Configuration.GetValue<bool>("Settings:IsDeployed");
+if (!isDeployed && app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -35,6 +49,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "StaticFiles")),
+    RequestPath = "/app" // URL path to access the Angular app
+});
 
 app.MapControllers();
 

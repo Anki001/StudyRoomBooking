@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
-namespace StudyRoomBooking.Models.Models
+namespace StudyRoomBooking.Models.DomainModels
 {
 
     public class BookingDetails
@@ -13,6 +14,7 @@ namespace StudyRoomBooking.Models.Models
 
         public string Email { get; set; }
         public DateTime Date { get; set; }
-        public Room RoomDetails { get; set; }
+        [JsonIgnore]
+        public StudyRoom StudyRoom { get; set; }
     }
 }

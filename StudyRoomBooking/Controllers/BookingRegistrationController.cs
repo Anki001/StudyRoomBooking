@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.Models;
+using StudyRoomBooking.Models.DomainModels;
+using StudyRoomBooking.Models.Messages.Request;
+using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.Controllers
 {
@@ -8,30 +11,37 @@ namespace StudyRoomBooking.Controllers
     [ApiController]
     public class BookingRegistrationController : ControllerBase
     {
-         private readonly IBookingRegistration _bookingRegistration;
-         public BookingRegistrationController(IBookingRegistration bookingRegistration)
+        private readonly IServiceFactory _serviceFactory;
+
+        public BookingRegistrationController(IServiceFactory serviceFactory)
          {
-             _bookingRegistration = bookingRegistration;
+            _serviceFactory = serviceFactory;
          }
 
          [HttpPost("RoomBooking")]
-        public  IActionResult RoomBooking(UserDetails userDetails)
+        public  IActionResult StudyRoomBooking(BookingDetails bookingDetails)
         {
             try
             {
-               bool result=  _bookingRegistration.UserDetailsValidation(userDetails);
-                if (!result)
+                var bookingRegistrationRequest = new BookingRegistrationRequest()
+                {
+                    BookingDetails = bookingDetails
+                };
+
+                var result = _serviceFactory.ProcessService<BookingRegistrationRequest, BookingRegistrationReponse>(bookingRegistrationRequest);
+               
+                if (result.BookingId==-1)
                 {
                     return BadRequest("UserDetails Are Invalid");
                 }
-                string roomresult= _bookingRegistration.RoomAvilabilty(userDetails);
-                if (roomresult.Equals("no"))
+                
+                if (result.BookingId == 0)
                 {
-                    return Ok("Room is Unavailable");
+                    return NotFound("StudyRoom is Unavailable");
                 }
                
-                int bookingId =  _bookingRegistration.BookingIdByRoomId(roomresult);
-                return Ok(bookingId);
+               
+                return Ok(result.BookingId);
               
 
                
