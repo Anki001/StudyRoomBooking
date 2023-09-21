@@ -6,7 +6,7 @@ namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
     {
         int BookStudyRoom(BookingDetails bookingDetails);
        
-        StudyRoom IsAvilable();
+        StudyRoom IsRoomAvilable();
 
 
 

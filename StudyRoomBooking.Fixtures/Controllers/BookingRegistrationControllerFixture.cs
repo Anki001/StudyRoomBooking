@@ -70,7 +70,7 @@ namespace StudyRoomBooking.Fixtures.Controllers
 
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result);
-            Assert.That(((OkObjectResult)result).Value, Is.EqualTo(1));
+            Assert.That(((OkObjectResult)result).Value, Is.EqualTo("Your Booking is successfull with BookingId:1"));
         }
 
         [Test]

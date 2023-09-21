@@ -76,7 +76,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
             };
 
             // Act
-            var result = _bookingRegistrationRepository.IsAvilable();
+            var result = _bookingRegistrationRepository.IsRoomAvilable();
 
             // Assert
             Assert.That(result, Is.Not.Null);
@@ -89,7 +89,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 
 
             // Act
-            var result = _bookingRegistrationRepository.IsAvilable();
+            var result = _bookingRegistrationRepository.IsRoomAvilable();
 
             // Assert
             Assert.IsNull(result);

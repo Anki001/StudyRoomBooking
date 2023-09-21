@@ -39,7 +39,7 @@ namespace StudyRoomBooking.DataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public StudyRoom IsAvilable()
+        public StudyRoom IsRoomAvilable()
         {
             StudyRoom roomDetails = _context.StudyRooms.FirstOrDefault(e => e.IsAvailable.Equals(true));
             return roomDetails;

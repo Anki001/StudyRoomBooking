@@ -44,7 +44,7 @@ namespace StudyRoomBooking.Core.Helpers
 
 		public bool IsRoomAvilable()
 		{
-			StudyRoom roomDetails = _registrationRepo.IsAvilable();
+			StudyRoom roomDetails = _registrationRepo.IsRoomAvilable();
 			if (roomDetails == null)
 			{
 
