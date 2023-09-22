@@ -1,0 +1,66 @@
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #0f080836;
+  }
+  
+  .table thead {
+    background-color: #234558e0;
+    color: white;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+  }
+  
+  .true-icon i {
+    color: green;
+  }
+  
+  .false-icon i {
+    color: red;
+  }
+  
+  /* Angular animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  .card {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust the height as needed */
+    background-color: #f0f0f0; /* Set your desired background color */
+    border: 1px solid #ccc; /* Add a border if desired */
+    border-radius: 10px; /* Add rounded corners if desired */
+}
+
+.card p {
+    font-size: 24px; /* Set your desired font size */
+    color: #333; /* Set your desired text color */
+}
