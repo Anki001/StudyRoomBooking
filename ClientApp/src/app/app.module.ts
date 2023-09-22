@@ -11,6 +11,8 @@ import { RoomScreenComponent } from './room-components/room-screen/room-screen.c
 import { BookingConfirmationScreenComponent } from './room-components/booking-confirmation-screen/booking-confirmation-screen.component';
 import { BookingRegistrationComponent } from './room-components/booking-registration/booking-registration.component';
 import { ContactUsComponent } from './shared-component/contact-us/contact-us.component';
+import { BookingConfirmationService } from './services/booking-confirmation.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { ContactUsComponent } from './shared-component/contact-us/contact-us.com
     RoomScreenComponent,
     BookingConfirmationScreenComponent,
     BookingRegistrationComponent,
-    ContactUsComponent
+    ContactUsComponent,
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [BookingConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

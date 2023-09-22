@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'room', component: RoomScreenComponent },
   { path: 'bookingdetails', component: RoomBookingDetailsComponent },
-  { path: 'bookingconfirmation', component: BookingConfirmationScreenComponent },
+  { path: 'bookingconfirmation/:id', component: BookingConfirmationScreenComponent },
   { path: 'bookingregistration', component: BookingRegistrationComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: '**', redirectTo: 'home' },

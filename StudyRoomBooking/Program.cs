@@ -13,6 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy",
+        builder => builder
+        .WithOrigins("http://localhost:4200")  
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+
+
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
@@ -28,7 +39,11 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
                            typesToRegister.serviceTypes.ForEach(typeToRegister => builder.Services.AddScoped(typeToRegister, typesToRegister.assignedType));
                        });
 
+
 var app = builder.Build();
+
+app.UseCors("MyCorsPolicy");
+
 
 // Configure the HTTP request pipeline.
 var isDeployed = builder.Configuration.GetValue<bool>("Settings:IsDeployed");
@@ -51,3 +66,5 @@ app.UseStaticFiles(new StaticFileOptions
 app.MapControllers();
 
 app.Run();
+
+
