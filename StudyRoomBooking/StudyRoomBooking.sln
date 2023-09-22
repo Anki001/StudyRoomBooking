@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.Models", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.Fixtures", "..\StudyRoomBooking.Fixtures\StudyRoomBooking.Fixtures.csproj", "{3EE2A2EE-84DC-49F5-B2CA-980F6E388285}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyRoomBooking.Core.Fixtures", "..\StudyRoomBooking.Core.Fixtures\StudyRoomBooking.Core.Fixtures.csproj", "{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.Core.Fixtures", "..\StudyRoomBooking.Core.Fixtures\StudyRoomBooking.Core.Fixtures.csproj", "{9FC081D9-A3A0-4F61-BA1C-6B5D9A6F6C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudyRoomBooking.DataAccess.Fixtures", "..\StudyRoomBooking.DataAccess.Fixtures\StudyRoomBooking.DataAccess.Fixtures.csproj", "{886BADF7-72B7-4D01-858E-A973C8946D7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyRoomBooking.DataAccess.Fixtures", "..\StudyRoomBooking.DataAccess.Fixtures\StudyRoomBooking.DataAccess.Fixtures.csproj", "{886BADF7-72B7-4D01-858E-A973C8946D7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
