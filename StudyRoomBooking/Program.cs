@@ -1,4 +1,6 @@
 using Microsoft.Extensions.FileProviders;
+using StudyRoomBooking.Core.Helpers;
+using StudyRoomBooking.Core.Helpers.Intefaces;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
@@ -15,6 +17,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
+
+builder.Services.AddScoped<IBookingRegistrationHelper, BookingRegistrationService>();
+
+
+
+
 
 builder.Services.AddTransient<IServiceFactory, ServiceHandlerFactory>();
 
