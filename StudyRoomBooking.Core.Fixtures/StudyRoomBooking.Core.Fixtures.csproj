@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StudyRoomBooking.Core\StudyRoomBooking.Core.csproj" />
+    <ProjectReference Include="..\StudyRoomBooking.DataAccess\StudyRoomBooking.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
