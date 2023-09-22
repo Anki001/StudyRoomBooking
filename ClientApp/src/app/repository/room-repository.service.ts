@@ -17,4 +17,5 @@ export class RoomRepositoryService {
      console.log("Repository Call for Getting Rooms");
     return this.http.get(`${this.baseUrl}/api/Room/GetAllRooms`);
   }
+  
 }
