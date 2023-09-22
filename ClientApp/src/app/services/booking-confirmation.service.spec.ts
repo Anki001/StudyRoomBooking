@@ -4,7 +4,7 @@ import { BookingConfirmationService } from './booking-confirmation.service';
 import { BookingConfirmationRepository } from '../repositories/booking-confirmation.repository';
 import { BookingDetails } from '../model/bookingdetails';
 
-fdescribe('BookingConfirmationService', () => {
+describe('BookingConfirmationService', () => {
     let service: BookingConfirmationService;
     let mockRepository: jasmine.SpyObj<BookingConfirmationRepository>;
 

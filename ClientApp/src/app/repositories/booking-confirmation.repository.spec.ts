@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { BookingDetails } from '../model/bookingdetails';
 import { BookingConfirmationRepository } from './booking-confirmation.repository';
 
-fdescribe('BookingConfirmationRepository', () => {
+describe('BookingConfirmationRepository', () => {
     let service: BookingConfirmationRepository;
     let httpMock: HttpTestingController;
 

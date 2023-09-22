@@ -22,17 +22,11 @@ export class BookingConfirmationScreenComponent {
         this.bookingId=parseInt(id)
       }
     
-    this.getBookingDetails()
+    
     this.getdummydata(this.bookingId)
 
   }
-  getBookingDetails() {
-      this.service.getBookingDetails(this.bookingId).subscribe(data => {
-        Object.assign(this.bookingDetails, data)
-      });
-      console.log(this.bookingDetails)
-    
-  }
+ 
   getdummydata(bookingId:number){
     const booking= bookingDetailsArray.filter(data=>data.bookingId==bookingId)
     this.bookingDetails=booking[0]
