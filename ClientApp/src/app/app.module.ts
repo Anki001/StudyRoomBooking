@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared-component/navbar/navbar.component';
@@ -11,6 +11,7 @@ import { RoomScreenComponent } from './room-components/room-screen/room-screen.c
 import { BookingConfirmationScreenComponent } from './room-components/booking-confirmation-screen/booking-confirmation-screen.component';
 import { BookingRegistrationComponent } from './room-components/booking-registration/booking-registration.component';
 import { ContactUsComponent } from './shared-component/contact-us/contact-us.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,14 @@ import { ContactUsComponent } from './shared-component/contact-us/contact-us.com
     RoomScreenComponent,
     BookingConfirmationScreenComponent,
     BookingRegistrationComponent,
-    ContactUsComponent
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

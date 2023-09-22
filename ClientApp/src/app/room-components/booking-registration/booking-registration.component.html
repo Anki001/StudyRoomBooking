@@ -1,1 +1,99 @@
-<p>booking-registration works!</p>
+<!--<p>booking-registration works!</p>
+<form class="row g-3 needs-validation" novalidate>
+  <div class="mb-3">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="date" class="form-label">Date</label>
+    <input type="date" class="form-control" id="date" required>
+    <div class="invalid-feedback">
+      Please provide a valid Date.
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+ </form> -->
+ <div class="container-fluid">
+  <div class="form-container">
+
+    <form [formGroup]="registrationForm" (ngSubmit)="SubmitForm()" #form="ngForm">
+
+      <div class="row mb-2 mt-3">
+        <!-- first name filed start -->
+        <div class="col">
+          <label class="form-label text-primary" for="firstname">First Name:</label>
+          <input type="text" id="firstname" formControlName="firstname"  class="form-control">
+          <div *ngIf="registrationForm.get('firstname')?.touched && registrationForm.get('firstname')?.hasError('required')" class="error-message">
+            First name is required.
+          </div>
+          <div *ngIf="registrationForm.get('firstname')?.dirty && registrationForm.get('firstname')?.errors?.['pattern']" class="error-message">
+            Only alphabets are allowed in the first name.
+          </div>
+        </div>
+        <!-- first name filed end -->
+        <!-- second name filed start -->
+        <div class="col">
+          <label for="lastname" class="form-label text-primary">Last Name:</label>
+          <input type="text" id="lastname" formControlName="lastname" class="form-control">
+          <div *ngIf="registrationForm.get('lastname')?.touched && registrationForm.get('lastname')?.hasError('required')" class="error-message">
+            Last name is required.
+          </div>
+          <div *ngIf="registrationForm.get('lastname')?.dirty && registrationForm.get('lastname')?.errors?.['pattern']" class="error-message">
+            Only alphabets are allowed in the last name.
+          </div>
+        </div>
+      </div>
+      <!-- email filed start -->
+      <div class="mb-2 mt-3">
+        <label for="email" class="form-label text-primary">Email ID:</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['required']" class="error-message">
+          Email ID is required.
+        </div>
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']" class="error-message">
+          Invalid email format.
+        </div>
+      </div>
+      <!-- email filed end -->
+      <!-- date field start -->
+    <div class="mb-2 mt-3">
+      <label for="date" class="form-label text-primary">Date:</label>
+      <input type="date" id="date" formControlName="date" class="form-control">
+      <div *ngIf="registrationForm.get('date')?.touched && registrationForm.get('date')?.hasError('required')" class="error-message">
+        Date is required.
+      </div>
+      <div *ngIf="registrationForm.get('date')?.touched && registrationForm.get('date')?.hasError('previousDay')" class="error-message">
+        Date cannot be a previous day.
+      </div>
+    </div>
+    <!-- date field end -->
+
+      <div class="text-center mt-3">
+        <button type="submit" [disabled]="registrationForm.invalid" >Book Study Room</button>
+      </div>
+      <div class="row text-center mt-2">
+        <div class="col register">
+
+          <a class="text-" routerLink="/"><b>Go to Home Page</b></a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
