@@ -13,15 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("MyCorsPolicy",
-        builder => builder
-        .WithOrigins("http://localhost:4200")  
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials());
-});
+
 
 
 builder.Services
@@ -42,7 +34,6 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
 
 var app = builder.Build();
 
-app.UseCors("MyCorsPolicy");
 
 
 // Configure the HTTP request pipeline.
