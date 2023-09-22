@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { RoomService } from 'src/app/services/room.service';
 
 @Component({
@@ -6,13 +7,24 @@ import { RoomService } from 'src/app/services/room.service';
   templateUrl: './room-screen.component.html',
   styleUrls: ['./room-screen.component.css']
 })
-export class RoomScreenComponent {
+export class RoomScreenComponent implements OnInit{
 
+  rooms: any[] = [];
 
   constructor(private roomService:RoomService) {  
   }
-  getRooms(){
-   return this.roomService.getRooms()
+  ngOnInit(): void {
+    this.getRooms()
   }
-
+  
+getRooms(){
+  this.roomService.getRoomsdATA().subscribe(
+    (data) => {
+      this.rooms = data.rooms;
+    },
+    (error) => {
+      console.error('Error fetching rooms', error);
+    }
+  );
+}
 }

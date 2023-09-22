@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./room-booking-details.component.css']
 })
 export class RoomBookingDetailsComponent {
-
+  bookingId:any = "1"
+  date:any = "21-june-2023"
+  name:any= "Ankush"
 }

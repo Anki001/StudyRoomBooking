@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let room of getRooms(); let i = index">
+      <tr *ngFor="let room of rooms; let i = index">
         <th>{{ i + 1 }}</th>
         <td>{{ room.name }}</td>
         <td>{{ room.roomNumber }}</td>
@@ -25,6 +25,6 @@
     </tbody>
    
   </table>
-  <div class="card" *ngIf="!getRooms() || getRooms().length <= 0">
+  <div class="card" *ngIf="!rooms || rooms.length <= 0">
     <p >No Record Found</p>
 </div>

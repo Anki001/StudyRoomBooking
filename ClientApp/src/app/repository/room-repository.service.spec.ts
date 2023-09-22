@@ -25,7 +25,8 @@ describe('RoomRepositoryService', () => {
   });
 
   it('should retrieve rooms', () => {
-    const mockRooms = [{ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:true  }, { id: 2, name: 'Room 2',roomNumber:'B746',isAvailable:true  }];
+    const mockRooms = [{ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:true  }, 
+    { id: 2, name: 'Room 2',roomNumber:'B746',isAvailable:true  }];
 
     service.getRooms().subscribe((rooms) => {
       expect(rooms).toEqual(mockRooms);

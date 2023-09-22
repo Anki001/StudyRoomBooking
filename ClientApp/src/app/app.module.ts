@@ -8,10 +8,10 @@ import { RoomBookingDetailsComponent } from './room-components/room-booking-deta
 import { RoomScreenComponent } from './room-components/room-screen/room-screen.component';
 import { BookingConfirmationScreenComponent } from './room-components/booking-confirmation-screen/booking-confirmation-screen.component';
 import { BookingRegistrationComponent } from './room-components/booking-registration/booking-registration.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http'
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +19,11 @@ import {HttpClientModule} from '@angular/common/http'
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    ContactUsComponent,
     RoomBookingDetailsComponent,
     RoomScreenComponent,
     BookingConfirmationScreenComponent,
-    BookingRegistrationComponent,
-    ContactUsComponent
+    BookingRegistrationComponent
   ],
   imports: [
     BrowserModule,
