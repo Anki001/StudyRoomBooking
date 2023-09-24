@@ -1,10 +1,11 @@
 import { StudyRoom } from "./studyroom"
 
 export class BookingDetails{
-     bookingId?:number
-     firstName?:string
-     lastName?:string
-     email?:string
-     date?:Date
-     studyRoom?:StudyRoom
+    public bookingId?:number
+    public firstName?:string
+    public lastName?:string
+    public email?:string
+    public date?:Date
+    public studyRoom?:StudyRoom
+     constructor(){}
 }

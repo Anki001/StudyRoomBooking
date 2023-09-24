@@ -1,20 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from '../environments/environment';
-import { BookingDetails } from '../model/bookingdetails';
-import { BookingConfirmationRepository } from './booking-confirmation.repository';
+import { bookingDetails } from '../model/bookingdetails';
+import { StudyRoomRepository } from './studyroom.repository';
 
 describe('BookingConfirmationRepository', () => {
-    let service: BookingConfirmationRepository;
+    let service: StudyRoomRepository;
     let httpMock: HttpTestingController;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [BookingConfirmationRepository]
+            providers: [StudyRoomRepository]
         });
 
-        service = TestBed.inject(BookingConfirmationRepository);
+        service = TestBed.inject(StudyRoomRepository);
         httpMock = TestBed.inject(HttpTestingController);
     });
 
@@ -27,7 +27,7 @@ describe('BookingConfirmationRepository', () => {
     });
 
     it('should fetch booking details by ID', () => {
-        const mockBookingDetails: BookingDetails = {
+        const mockBookingDetails: bookingDetails = {
           bookingId: 1,firstName:"rakesh",lastName:"pernati",email:"rakesh@gmail.com",date:new Date()
         };
 
