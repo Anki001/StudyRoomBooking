@@ -73,6 +73,8 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/app" // URL path to access the Angular app
 });
 
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());//for Cross-origin
+
 app.MapControllers();
 
 app.Run();

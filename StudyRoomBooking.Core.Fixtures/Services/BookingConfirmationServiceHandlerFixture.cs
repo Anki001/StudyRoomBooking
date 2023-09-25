@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace StudyRoomBooking.Core.Fixtures.Services
 {
     [TestFixture]
-    public class BookingDetailsServiceHandlerFixture
+    public class BookingConfirmationServiceHandlerFixture
     {
         [Test]
         public void ExecuteService_ValidBookingRequest_ReturnsBookingDetailsResponse()
@@ -24,11 +24,11 @@ namespace StudyRoomBooking.Core.Fixtures.Services
             var request = new BookingRequest { Id = validId };
 
             // Create a mock for IBookingDetailsRepository
-            var mockRepository = new Mock<IBookingDetailsRepository>();
-            var expectedResponse = new BookingDetailsResponse { BookingDetails = new BookingDetails() };
+            var mockRepository = new Mock<IBookingConfirmationRepository>();
+            var expectedResponse = new BookingConfirmationResponse { BookingDetails = new BookingDetails() };
             mockRepository.Setup(repo => repo.GetBookingDetailsById(validId)).Returns(expectedResponse);
 
-            var serviceHandler = new BookingDetailsServiceHandler(mockRepository.Object);
+            var serviceHandler = new BookingConfirmationServiceHandler(mockRepository.Object);
 
             // Act
             var result = serviceHandler.ExecuteService(request);
@@ -45,10 +45,10 @@ namespace StudyRoomBooking.Core.Fixtures.Services
             var request = new BookingRequest { Id = 0 };
 
             // Create a mock for IBookingDetailsRepository
-            var mockRepository = new Mock<IBookingDetailsRepository>();
-            _ = mockRepository.Setup(repo => repo.GetBookingDetailsById(It.IsAny<int>())).Returns((BookingDetailsResponse)null);
+            var mockRepository = new Mock<IBookingConfirmationRepository>();
+            _ = mockRepository.Setup(repo => repo.GetBookingDetailsById(It.IsAny<int>())).Returns((BookingConfirmationResponse)null);
 
-            var serviceHandler = new BookingDetailsServiceHandler(mockRepository.Object);
+            var serviceHandler = new BookingConfirmationServiceHandler(mockRepository.Object);
 
             // Act
             var result = serviceHandler.ExecuteService(request);

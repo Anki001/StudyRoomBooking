@@ -1,6 +1,4 @@
-﻿using StudyRoomBooking.Models;
-using StudyRoomBooking.Models.DomainModels;
-using System;
+﻿using StudyRoomBooking.Models.DomainModels;
 
 namespace StudyRoomBooking.Core.Helpers.Intefaces
 {

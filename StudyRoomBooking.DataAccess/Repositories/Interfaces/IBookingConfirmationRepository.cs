@@ -3,8 +3,8 @@ using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
-    public interface IBookingDetailsRepository
+    public interface IBookingConfirmationRepository
     {
-        BookingDetailsResponse GetBookingDetailsById(int id);
+        BookingConfirmationResponse GetBookingDetailsById(int id);
     }
 }

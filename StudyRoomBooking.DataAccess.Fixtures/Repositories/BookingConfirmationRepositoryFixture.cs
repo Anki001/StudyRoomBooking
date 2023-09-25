@@ -1,21 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Moq;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using StudyRoomBooking.DataAccess.Repositories;
 using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.DomainModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 {
     [TestFixture]
-    public class BookingDetailsRepositoryFixture
+    public class BookingConfirmationRepositoryFixture
     {
-        private IBookingDetailsRepository _bookingDetailsRepository;
+        private IBookingConfirmationRepository _bookingDetailsRepository;
         private ApplicationDbContext _context;
 
         [SetUp]
@@ -27,7 +21,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
                 .Options;
 
             _context = new ApplicationDbContext(options);
-            _bookingDetailsRepository = new BookingDetailsRepository(_context);
+            _bookingDetailsRepository = new BookingConfirmationRepository(_context);
         }
 
         [TearDown]
@@ -43,7 +37,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
             int validId = 1;
 
             // Add a sample BookingDetails to the in-memory database
-            _context.BookingDetails.Add(new BookingDetails { BookingId = validId,FirstName="Siva",LastName="Krishna",Email="siva123@gmail.com",Date=DateTime.Now,StudyRoom = new StudyRoom { Id=1,Name="Earth",RoomNumber="A123",IsAvailable=true} });
+            _context.BookingDetails.Add(new BookingDetails { BookingId = validId, FirstName = "Siva", LastName = "Krishna", Email = "siva123@gmail.com", Date = DateTime.Now, StudyRoom = new StudyRoom { Id = 1, Name = "Earth", RoomNumber = "A123", IsAvailable = true } });
             _context.SaveChanges();
 
             // Act
@@ -56,7 +50,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
                 Assert.That(result.BookingDetails.BookingId, Is.EqualTo(validId));
                 Assert.That(result.BookingDetails.FirstName, Is.EqualTo("Siva"));
             });
-            
+
         }
 
         [Test]

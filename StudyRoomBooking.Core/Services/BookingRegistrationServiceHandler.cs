@@ -1,6 +1,5 @@
 ﻿using StudyRoomBooking.Core.Helpers.Intefaces;
 using StudyRoomBooking.Core.Services.Interfaces;
-using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
 
@@ -18,6 +17,7 @@ namespace StudyRoomBooking.Core.Services
         public BookingRegistrationReponse ExecuteService(BookingRegistrationRequest request)
         {
             var bookingResponse=new BookingRegistrationReponse();
+
             bool isValid = _bookingRegistration.ValidateUserRequest(request.BookingDetails);
             if (!isValid)
             {
