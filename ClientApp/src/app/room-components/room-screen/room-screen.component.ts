@@ -27,6 +27,7 @@ getRooms(){
     },
     (error) => {
       console.error(GlobalConstants.GENERIC_ERROR, error);
+      this.rooms = []
     }
   );
 }

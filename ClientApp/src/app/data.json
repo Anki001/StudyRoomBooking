@@ -1,0 +1,15 @@
+{
+    "bookingDetails": {
+      "bookingId": 1,
+      "firstName": "Ankush",
+      "lastName": "kumar",
+      "email": "ankush1601@gmail.com",
+      "date": "2023-09-22T08:52:47.416",
+      "studyRoom": {
+        "id": 1,
+        "name": "Earth",
+        "roomNumber": "A101",
+        "isAvailable": false
+      }
+    }
+  }
