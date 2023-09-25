@@ -1,22 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { RoomService } from './room.service';
-import { RoomRepositoryService } from '../repository/room-repository.service';
 import { of } from 'rxjs';
+import { ApiServiceService } from 'src/shared/services/api-service.service';
 
 describe('RoomService', () => {
   let roomService: RoomService;
-  let roomRepositoryService: jasmine.SpyObj<RoomRepositoryService>;
+  let apiService: jasmine.SpyObj<ApiServiceService>;
 
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('RoomRepositoryService', ['getRooms']);
+    const spy = jasmine.createSpyObj('apiService', ['getRooms']);
     TestBed.configureTestingModule({
       providers: [
         RoomService,
-        { provide: RoomRepositoryService, useValue: spy }
+        { provide: ApiServiceService, useValue: spy }
       ]
     });
     roomService = TestBed.inject(RoomService);
-    roomRepositoryService = TestBed.inject(RoomRepositoryService) as jasmine.SpyObj<RoomRepositoryService>;
+    apiService = TestBed.inject(ApiServiceService) as jasmine.SpyObj<ApiServiceService>;
   });
 
   it('should be created', () => {
@@ -24,15 +24,15 @@ describe('RoomService', () => {
   });
 
 
-  it('should return rooms from the repository', () => {
+  it('should return rooms from the common service', () => {
     const mockRooms = [{ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:true  }, 
     { id: 2, name: 'Room 2',roomNumber:'B746',isAvailable:true  }];
-     roomRepositoryService.getRooms.and.returnValue(of(mockRooms));
+     apiService.Get.and.returnValue(of(mockRooms));
 
-    roomService.getRoomsdATA().subscribe(rooms => {
+    roomService.getRooms().subscribe(rooms => {
       expect(rooms).toEqual(mockRooms);
     });
 
-    expect(roomRepositoryService.getRooms).toHaveBeenCalled();
+    expect(apiService.Get).toHaveBeenCalled();
   });
 });
