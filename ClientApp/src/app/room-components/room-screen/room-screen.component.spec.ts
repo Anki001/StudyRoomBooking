@@ -27,11 +27,11 @@ describe('RoomScreenComponent', () => {
 
   it('should fetch and display rooms', () => {
     const mockRooms = [{ id: 1, name: 'Room 1' }, { id: 2, name: 'Room 2' }];
-    roomService.getRoomsdATA.and.returnValue(of({ rooms: mockRooms }));
+    roomService.getRooms.and.returnValue(of({ rooms: mockRooms }));
 
     fixture.detectChanges();
     
-    expect(roomService.getRoomsdATA).toHaveBeenCalled();
+    expect(roomService.getRooms).toHaveBeenCalled();
     expect(component.rooms).toEqual(mockRooms);
   });
 

@@ -1,6 +1,5 @@
 ﻿using StudyRoomBooking.Models.DomainModels;
 using StudyRoomBooking.Models.Messages.Response;
-using System.Threading.Tasks;
 
 namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
