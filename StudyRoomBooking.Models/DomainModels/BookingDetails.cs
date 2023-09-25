@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace StudyRoomBooking.Models.DomainModels
 {
@@ -14,7 +13,6 @@ namespace StudyRoomBooking.Models.DomainModels
 
         public string Email { get; set; }
         public DateTime Date { get; set; }
-        
         public StudyRoom StudyRoom { get; set; }
     }
 }
