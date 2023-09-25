@@ -2,7 +2,7 @@
 
 namespace StudyRoomBooking.Models.Messages.Response
 {
-    public class BookingDetailsResponse
+    public class BookingConfirmationResponse
     {
         public BookingDetails BookingDetails { get; set; }
     }

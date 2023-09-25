@@ -5,10 +5,10 @@ using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Models.DomainModels;
 using StudyRoomBooking.Models.Messages.Request;
 
-namespace StudyRoomBooking.Core.Fixtures.ServiceTests
+namespace StudyRoomBooking.Core.Fixtures.Services
 {
     [TestFixture]
-    public class BookingRegistrationServiceFixture 
+    public class BookingRegistrationServiceFixture
     {
         private Mock<IBookingRegistrationHelper> _bookingRegistrationMock;
         private BookingRegistrationServiceHandler _handler;
@@ -67,7 +67,7 @@ namespace StudyRoomBooking.Core.Fixtures.ServiceTests
             Assert.That(response.BookingId, Is.EqualTo(expectedBookingId));
         }
 
-        
+
     }
 
 }
