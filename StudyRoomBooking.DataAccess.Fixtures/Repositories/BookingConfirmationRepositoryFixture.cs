@@ -7,9 +7,9 @@ using StudyRoomBooking.Models.DomainModels;
 namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 {
     [TestFixture]
-    public class BookingDetailsRepositoryFixture
+    public class BookingConfirmationRepositoryFixture
     {
-        private IBookingDetailsRepository _bookingDetailsRepository;
+        private IBookingConfirmationRepository _bookingDetailsRepository;
         private ApplicationDbContext _context;
 
         [SetUp]
@@ -21,7 +21,7 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
                 .Options;
 
             _context = new ApplicationDbContext(options);
-            _bookingDetailsRepository = new BookingDetailsRepository(_context);
+            _bookingDetailsRepository = new BookingConfirmationRepository(_context);
         }
 
         [TearDown]
