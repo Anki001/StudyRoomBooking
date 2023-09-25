@@ -12,8 +12,6 @@ namespace StudyRoomBooking.Controllers
     {
         private readonly IServiceFactory _serviceFactory;
     
-
-
         public RoomController(IServiceFactory serviceFactory)
         {
   

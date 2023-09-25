@@ -14,9 +14,6 @@ namespace StudyRoomBooking.DataAccess.Repositories
         {
             _context = context;
         }
-
-      
-
         BookingConfirmationResponse IBookingConfirmationRepository.GetBookingDetailsById(int id)
         {
             if (id <= 0)

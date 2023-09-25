@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudyRoomBooking.Core.Services.Interfaces;
-using StudyRoomBooking.Models;
 using StudyRoomBooking.Models.DomainModels;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
@@ -39,12 +38,9 @@ namespace StudyRoomBooking.Controllers
                 {
                     return NotFound("StudyRoom is Unavailable");
                 }
-               
-               
-                return Ok($"Your Booking is successfull with BookingId:{result}");
-              
 
-               
+                return Ok($"Your Booking is successfull with BookingId:{result.BookingId}");
+              
             }
             catch (Exception ex)
             {

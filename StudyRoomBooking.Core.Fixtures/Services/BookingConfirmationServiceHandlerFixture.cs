@@ -39,7 +39,7 @@ namespace StudyRoomBooking.Core.Fixtures.Services
         }
 
         [Test]
-        public void ExecuteServiceInvalidBookingRequestReturnsNull()
+        public void ExecuteService_InvalidBookingRequest_ReturnsNull()
         {
             // Arrange
             var request = new BookingRequest { Id = 0 };
