@@ -41,7 +41,7 @@ namespace StudyRoomBooking.Controllers
                 }
                
                
-                return Ok($"Your Booking is successfull with BookingId:{result.BookingId}");
+                return Ok($"{result.BookingId}");
               
 
                

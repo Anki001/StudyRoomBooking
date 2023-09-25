@@ -11,14 +11,14 @@
           <label class="form-label text-primary" for="firstname">First Name:</label>
           <input type="text" id="firstname" formControlName="firstname"  class="form-control">
           <div *ngIf="registrationForm.get('firstname')?.touched && registrationForm.get('firstname')?.hasError('required')" class="error-message">
-            First name is required.
+           First name is required.
           </div>
           <div *ngIf="registrationForm.get('firstname')?.dirty && registrationForm.get('firstname')?.errors?.['pattern']" class="error-message">
             Only alphabets are allowed in the first name.
           </div>
         </div>
         <!-- first name filed end -->
-        <!-- second name filed start -->
+        <!-- last name filed start -->
         <div class="col">
           <label for="lastname" class="form-label text-primary">Last Name:</label>
           <input type="text" id="lastname" formControlName="lastname" class="form-control">
@@ -30,6 +30,7 @@
           </div>
         </div>
       </div>
+       <!-- last name filed end -->
       <!-- email filed start -->
       <div class="mb-2 mt-3">
         <label for="email" class="form-label text-primary">Email ID:</label>
@@ -54,13 +55,11 @@
       </div>
     </div>
     <!-- date field end -->
-
       <div class="text-center mt-3">
         <button type="submit" [disabled]="registrationForm.invalid" >Book Study Room</button>
       </div>
       <div class="row text-center mt-2">
         <div class="col register">
-
           <a class="text-" routerLink="/"><b>Go to Home Page</b></a>
         </div>
       </div>

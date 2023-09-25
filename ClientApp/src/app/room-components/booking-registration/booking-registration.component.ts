@@ -1,6 +1,5 @@
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
-import { BookingregistrationService } from 'src/app/services/bookingregistration.service';
 import { Router } from '@angular/router';
 import { BookingregistrationRepositoryService } from 'src/app/repositories/bookingregistration-repository.service';
 
@@ -23,18 +22,21 @@ export class BookingRegistrationComponent {
    }
    notPreviousDay(control: FormControl): { [key: string]: boolean } | null {
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
     const selectedDate = new Date(control.value);
+    selectedDate.setHours(0, 0, 0, 0);
 
     if (selectedDate < currentDate) {
       return { previousDay: true };
     }
     return null;
   }
+
   SubmitForm() {
     console.log('Submitting form...');
-
     if (this.registrationForm?.invalid) {
-      console.log('Registration form is invalid or null...............');
+      console.log('Registration form is invalid or null');
       return;
     }
 
@@ -48,8 +50,9 @@ export class BookingRegistrationComponent {
             console.log('Registration form is invalid or null');
           } else {
             console.log('Navigation to /bookingconfirmation...');
-            // const bookingId = result.bookingId;
-            this.route.navigate(['/bookingconfirmation']);
+             const bookingId = result;
+             console.log(result+'printed result..... and bookingId:'+bookingId);
+            this.route.navigate([`/bookingconfirmation`]);
 
             // Clear the form fields
             this.registrationForm.reset({}, { emitEvent: false });
