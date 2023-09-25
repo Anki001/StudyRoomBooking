@@ -14,6 +14,7 @@ export class BookingregistrationService {
     //OnSubmit
     SubmitForm(){
       if(this.registrationForm?.invalid){
+        console.log('Registration form is invalid or null...............');
         return;
       }
       if(this.registrationForm?.valid){

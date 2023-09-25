@@ -1,4 +1,6 @@
 using Microsoft.Extensions.FileProviders;
+using StudyRoomBooking.Core.Helpers;
+using StudyRoomBooking.Core.Helpers.Intefaces;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
@@ -16,6 +18,20 @@ builder.Services.AddSwaggerGen();
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
+builder.Services.AddScoped<IBookingRegistrationHelper, BookingRegistrationService>();
+
+builder.Services.AddCors(options =>{
+    options.AddPolicy("MyCorsPolicy",
+        builder => builder
+        .WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+
+
+
+
 builder.Services.AddTransient<IServiceFactory, ServiceHandlerFactory>();
 
 Assembly.GetAssembly(typeof(ServiceHandlerFactory))
@@ -29,6 +45,7 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
                        });
 
 var app = builder.Build();
+app.UseCors("MyCorsPolicy");
 
 // Configure the HTTP request pipeline.
 var isDeployed = builder.Configuration.GetValue<bool>("Settings:IsDeployed");
