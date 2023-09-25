@@ -5,7 +5,6 @@ export class Room{
     isAvailable?:boolean
   }
   
-
 //   {
 //     [Key]
 //     public int Id { get; set; }
