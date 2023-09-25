@@ -1,9 +1,10 @@
 ﻿using StudyRoomBooking.Models.DomainModels;
+using System.Collections.Generic;
 
 namespace StudyRoomBooking.Models.Messages.Response
 {
     public class BookingDetailsResponse
     {
-        public BookingDetails BookingDetails { get; set; }
+       public IEnumerable<BookingDetails> bookingDetails { get; set; }
     }
 }

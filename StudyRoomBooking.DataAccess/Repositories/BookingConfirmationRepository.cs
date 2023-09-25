@@ -1,19 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudyRoomBooking.DataAccess.Repositories.Interfaces;
 using StudyRoomBooking.Models.Messages.Response;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StudyRoomBooking.DataAccess.Repositories
 {
-    public class BookingDetailsRepository :IBookingDetailsRepository
+    public class BookingConfirmationRepository :IBookingConfirmationRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public BookingDetailsRepository(ApplicationDbContext context)
+        public BookingConfirmationRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-        BookingDetailsResponse IBookingDetailsRepository.GetBookingDetailsById(int id)
+
+      
+
+        BookingConfirmationResponse IBookingConfirmationRepository.GetBookingDetailsById(int id)
         {
             if (id <= 0)
             {
@@ -24,7 +28,7 @@ namespace StudyRoomBooking.DataAccess.Repositories
             {
                 return null;
             }
-            return new BookingDetailsResponse
+            return new BookingConfirmationResponse
             {
                 BookingDetails = booking,
             };

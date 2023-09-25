@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace StudyRoomBooking.Core.Fixtures.Services
 {
     [TestFixture]
-    public class BookingDetailsServiceHandlerFixture
+    public class BookingConfirmationServiceHandlerFixture
     {
         [Test]
         public void ExecuteService_ValidBookingRequest_ReturnsBookingDetailsResponse()
@@ -39,7 +39,7 @@ namespace StudyRoomBooking.Core.Fixtures.Services
         }
 
         [Test]
-        public void ExecuteService_InvalidBookingRequest_ReturnsNull()
+        public void ExecuteServiceInvalidBookingRequestReturnsNull()
         {
             // Arrange
             var request = new BookingRequest { Id = 0 };

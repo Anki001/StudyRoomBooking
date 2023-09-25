@@ -1,10 +1,13 @@
 ﻿using StudyRoomBooking.Models.DomainModels;
 using StudyRoomBooking.Models.Messages.Response;
+using System.Collections.Generic;
 
 namespace StudyRoomBooking.DataAccess.Repositories.Interfaces
 {
-    public interface IBookingDetailsRepository
+    public interface IBookingConfirmationRepository
     {
-        BookingDetailsResponse GetBookingDetailsById(int id);
+        BookingConfirmationResponse GetBookingDetailsById(int id);
+
+      
     }
 }

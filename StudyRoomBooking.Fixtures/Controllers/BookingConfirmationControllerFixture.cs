@@ -9,7 +9,7 @@ using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.Fixtures.Controllers
 {
-    public class BookingControllerFixture
+    public class BookingConfirmationControllerFixture
     {
         private BookingConfirmationController _bookingController;
         private Mock<IServiceFactory> _serviceFactoryMock;
@@ -25,9 +25,9 @@ namespace StudyRoomBooking.Fixtures.Controllers
         {
             // Arrange
             var expectedStatusCode = 404;
-            BookingDetailsResponse? response = null;
+            BookingConfirmationResponse? response = null;
             var bookingRequest = new BookingRequest();
-            _serviceFactoryMock.Setup(factory => factory.ProcessService<BookingRequest, BookingDetailsResponse>(bookingRequest))
+            _serviceFactoryMock.Setup(factory => factory.ProcessService<BookingRequest, BookingConfirmationResponse>(bookingRequest))
                 .Returns(response);
 
             // Act
@@ -62,9 +62,9 @@ namespace StudyRoomBooking.Fixtures.Controllers
                     RoomNumber="A101"
                 }
             };
-            var expectedBookingResponse = new BookingDetailsResponse() { BookingDetails = RefBookingDetails };
+            var expectedBookingResponse = new BookingConfirmationResponse() { BookingDetails = RefBookingDetails };
           
-            _serviceFactoryMock.Setup(factory => factory.ProcessService<BookingRequest, BookingDetailsResponse>(It.IsAny<BookingRequest>()))
+            _serviceFactoryMock.Setup(factory => factory.ProcessService<BookingRequest, BookingConfirmationResponse>(It.IsAny<BookingRequest>()))
                 .Returns(expectedBookingResponse);
 
             // Act

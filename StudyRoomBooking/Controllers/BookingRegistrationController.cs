@@ -18,7 +18,7 @@ namespace StudyRoomBooking.Controllers
             _serviceFactory = serviceFactory;
          }
 
-         [HttpPost("RoomBooking")]
+        [HttpPost("RoomBooking")]
         public  IActionResult StudyRoomBooking(BookingDetails bookingDetails)
         {
             try
@@ -41,7 +41,7 @@ namespace StudyRoomBooking.Controllers
                 }
                
                
-                return Ok($"Your Booking is successfull with BookingId:{result.BookingId}");
+                return Ok($"Your Booking is successfull with BookingId:{result}");
               
 
                
