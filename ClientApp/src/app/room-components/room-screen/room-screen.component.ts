@@ -17,7 +17,6 @@ export class RoomScreenComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getRooms()
-    this.getBookingDetailsById()
   }
   
 getRooms(){
@@ -32,9 +31,4 @@ getRooms(){
   );
 }
 
-getBookingDetailsById(){
-  this.roomService.getBookingDetailsById(1).subscribe(res=>{
-this.result = res
-  })
-}
 }

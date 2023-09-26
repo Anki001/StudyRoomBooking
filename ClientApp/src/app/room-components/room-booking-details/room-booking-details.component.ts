@@ -8,21 +8,20 @@ import { RoomBookingDetailsService } from 'src/app/services/room-booking-details
   styleUrls: ['./room-booking-details.component.css']
 })
 export class RoomBookingDetailsComponent {
-  data:any
-constructor(private bookingDetails:RoomBookingDetailsService) {
-  // this.getAllDetails()
-  this.getAll()
-}
-
-  getAllDetails(){
-    console.log("Component Called");
-  this.bookingDetails.getData().subscribe(res=>{
-    console.log(res);
-   return this.data = res
-   })
+  data: any
+  constructor(private bookingDetails: RoomBookingDetailsService) {
+    this.getAll()
   }
 
-  getAll(){
-    this.data= this.bookingDetails.getAllRoomDetails()
+  // getAllDetails() {
+  //   console.log("Component Called");
+  //   this.bookingDetails.getData().subscribe(res => {
+  //     console.log(res);
+  //     return this.data = res
+  //   })
+  // }
+
+  getAll() {
+    this.data = this.bookingDetails.getAllRoomDetails()
   }
 }

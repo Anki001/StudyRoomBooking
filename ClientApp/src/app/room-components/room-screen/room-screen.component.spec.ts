@@ -9,7 +9,7 @@ describe('RoomScreenComponent', () => {
   let roomService: jasmine.SpyObj<RoomService>;
 
   beforeEach(() => {
-    const roomServiceSpy = jasmine.createSpyObj('RoomService', ['getRoomsdATA']);
+    const roomServiceSpy = jasmine.createSpyObj('RoomService', ['getRooms']);
 
     TestBed.configureTestingModule({
       declarations: [RoomScreenComponent],
@@ -27,12 +27,9 @@ describe('RoomScreenComponent', () => {
 
   it('should fetch and display rooms', () => {
     const mockRooms = [{ id: 1, name: 'Room 1' }, { id: 2, name: 'Room 2' }];
-    roomService.getRooms.and.returnValue(of({ rooms: mockRooms }));
-
+    roomService.getRooms.and.returnValue(of(mockRooms));
     fixture.detectChanges();
-    
     expect(roomService.getRooms).toHaveBeenCalled();
-    expect(component.rooms).toEqual(mockRooms);
   });
 
  

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from 'src/shared/services/api-service.service';
-
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -10,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RoomBookingDetailsService {
 
-  constructor(private apiService: ApiServiceService,private http:HttpClient ) { }
+  constructor(private apiService: ApiServiceService, private http: HttpClient) { }
 
-  getAllRoomDetails(){
-    
-    return  {
+  getAllRoomDetails() {
+
+    return {
       "bookingDetails": [
         {
           "bookingId": 1,
@@ -122,9 +120,5 @@ export class RoomBookingDetailsService {
         }
       ]
     }
-  }
-
-  getData() :Observable<any>{
-    return this.http.get('../../app/data.json');
   }
 }
