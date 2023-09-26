@@ -17,7 +17,7 @@ namespace StudyRoomBooking.Controllers
             _serviceFactory = serviceFactory;
          }
 
-         [HttpPost("RoomBooking")]
+        [HttpPost("RoomBooking")]
         public  IActionResult StudyRoomBooking(BookingDetails bookingDetails)
         {
             try

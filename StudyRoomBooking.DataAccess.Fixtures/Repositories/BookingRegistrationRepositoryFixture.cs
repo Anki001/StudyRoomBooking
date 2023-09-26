@@ -8,7 +8,7 @@ using StudyRoomBooking.Models.DomainModels;
 namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 {
     [TestFixture]
-    public class BookingRegistrationRepoFixture : IDisposable
+    public class BookingRegistrationRepositoryFixture : IDisposable
     {
         private ApplicationDbContext _context;
         private BookingRegistrationRepository _bookingRegistrationRepository; // Assuming the method is in a service called YourService

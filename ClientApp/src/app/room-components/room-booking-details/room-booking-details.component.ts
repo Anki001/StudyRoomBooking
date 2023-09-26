@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookingDetails } from 'src/app/model/bookingDetails';
 import { RoomBookingDetailsService } from 'src/app/services/room-booking-details.service';
 
@@ -7,21 +7,19 @@ import { RoomBookingDetailsService } from 'src/app/services/room-booking-details
   templateUrl: './room-booking-details.component.html',
   styleUrls: ['./room-booking-details.component.css']
 })
-export class RoomBookingDetailsComponent {
+export class RoomBookingDetailsComponent implements OnInit {
   data: any
   constructor(private bookingDetails: RoomBookingDetailsService) {
-    this.getAll()
+    this.getAllDetails()
   }
-
-  // getAllDetails() {
-  //   console.log("Component Called");
-  //   this.bookingDetails.getData().subscribe(res => {
-  //     console.log(res);
-  //     return this.data = res
-  //   })
-  // }
-
-  getAll() {
-    this.data = this.bookingDetails.getAllRoomDetails()
+  ngOnInit(): void {
+    
   }
+   getAllDetails() {
+     console.log("Component Called");
+     this.bookingDetails.getAllBookings().subscribe(res => {
+       console.log(res);
+       return this.data = res
+     })
+   }
 }
