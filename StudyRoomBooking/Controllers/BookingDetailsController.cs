@@ -17,7 +17,7 @@ namespace StudyRoomBooking.Controllers
         {
             _serviceFactory = serviceFactory;
         }
-        [HttpGet("allbookingdetails")]
+        [HttpGet]
         public  IActionResult GetAllBookingDetails()
         {
             try
