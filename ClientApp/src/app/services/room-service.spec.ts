@@ -8,7 +8,7 @@ describe('RoomService', () => {
   let apiService: jasmine.SpyObj<ApiServiceService>;
 
   beforeEach(() => {
-    const spy = jasmine.createSpyObj('apiService', ['getRooms']);
+    const spy = jasmine.createSpyObj('apiService', ['Get']); // Update method name
     TestBed.configureTestingModule({
       providers: [
         RoomService,
@@ -25,14 +25,16 @@ describe('RoomService', () => {
 
 
   it('should return rooms from the common service', () => {
-    const mockRooms = [{ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:true  },
-    { id: 2, name: 'Room 2',roomNumber:'B746',isAvailable:true  }];
-     apiService.Get.and.returnValue(of(mockRooms));
-
-    roomService.getRooms().subscribe(rooms => {
+    const mockRooms = [{ id: 1, name: 'Room 1', roomNumber: 'A101', isAvailable: true },
+                      { id: 2, name: 'Room 2', roomNumber: 'B746', isAvailable: true }];
+  
+    apiService.Get.and.returnValue(of(mockRooms)); // Update method name
+  
+    roomService.getRooms().subscribe(rooms => { // Pass 'rooms' as the endpoint
       expect(rooms).toEqual(mockRooms);
     });
-
+  
     expect(apiService.Get).toHaveBeenCalled();
   });
+
 });

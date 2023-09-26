@@ -43,6 +43,9 @@
         <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']" class="error-message">
           Invalid email format.
         </div>
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.hasError('pattern')" class="error-message">
+          Please provide valid email format.
+        </div>
       </div>
       <!-- Email field end -->
       <!-- Date field start -->

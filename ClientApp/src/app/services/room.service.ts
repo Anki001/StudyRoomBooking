@@ -13,7 +13,4 @@ export class RoomService {
     return this.apiService.Get(ApiConstants.GET_ROOMS);
   }
  
-  getBookingDetailsById(id:number):Observable<any>{
-     return this.apiService.GetById(ApiConstants.GET_BOOKING_CONFIRMATION_ID,id)
-  }
 }
