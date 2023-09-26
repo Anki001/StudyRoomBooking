@@ -7,7 +7,7 @@ using StudyRoomBooking.Models.DomainModels;
 namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 {
     [TestFixture]
-    public class BookingConfirmationRepositoryFixture
+    public class BookingConfirmationRepositoryFixture:IDisposable
     {
         private IBookingConfirmationRepository _bookingDetailsRepository;
         private ApplicationDbContext _context;
@@ -77,6 +77,13 @@ namespace StudyRoomBooking.DataAccess.Fixtures.Repositories
 
             // Assert
             Assert.IsNull(result);
+        }
+
+        [TearDown]
+        public void Dispose()
+        {
+            _context.Database.EnsureDeleted();
+            _context.Dispose();
         }
 
 

@@ -9,7 +9,7 @@ using StudyRoomBooking.Models.Messages.Response;
 
 namespace StudyRoomBooking.Fixtures.Controllers
 {
-    public class BookingControllerFixture
+    public class BookingConfirmationControllerFixture
     {
         private BookingConfirmationController _bookingController;
         private Mock<IServiceFactory> _serviceFactoryMock;
