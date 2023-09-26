@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookingDetails } from 'src/app/model/bookingDetails';
+import { BookingDetails } from 'src/app/model/bookingdetails';
 import { RoomBookingDetailsService } from 'src/app/services/room-booking-details.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { RoomBookingDetailsService } from 'src/app/services/room-booking-details
   styleUrls: ['./room-booking-details.component.css']
 })
 export class RoomBookingDetailsComponent implements OnInit {
-  data: any
+  
+  data: BookingDetails[]=[]
+
   constructor(private bookingDetails: RoomBookingDetailsService) {
     this.getAllDetails()
   }
@@ -18,8 +20,8 @@ export class RoomBookingDetailsComponent implements OnInit {
    getAllDetails() {
      console.log("Component Called");
      this.bookingDetails.getAllBookings().subscribe(res => {
-       console.log(res);
-       return this.data = res
+       console.log(res.bookingDetails);
+       return this.data = res.bookingDetails
      })
    }
 }

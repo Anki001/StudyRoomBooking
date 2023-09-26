@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { RoomBookingDetailsComponent } from './room-booking-details.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing'; // Import HttpClientTestingModule // Import your ApiServiceService
 import { ApiServiceService } from 'src/shared/services/api-service.service';
@@ -18,9 +17,9 @@ describe('RoomBookingDetailsComponent', () => {
     
     TestBed.configureTestingModule({
       declarations: [RoomBookingDetailsComponent],
-      imports: [HttpClientTestingModule], // Add HttpClientTestingModule
+      imports: [HttpClientTestingModule], 
       providers: [ApiServiceService
-      ], // Provide ApiServiceService
+      ],
       
     });
 

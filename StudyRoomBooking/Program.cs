@@ -17,10 +17,24 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+
 builder.Services
     .RegisterDataAccessServiceDependencies(builder.Configuration);
 
 builder.Services.AddScoped<IBookingRegistrationHelper, BookingRegistrationService>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy",
+        builder => builder
+        .WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+
+
 
 
 
@@ -39,6 +53,8 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
                            typesToRegister.serviceTypes.ForEach(typeToRegister => builder.Services.AddScoped(typeToRegister, typesToRegister.assignedType));
                        });
 var app = builder.Build();
+
+app.UseCors("MyCorsPolicy");
 
 // Configure the HTTP request pipeline.
 var isDeployed = builder.Configuration.GetValue<bool>("Settings:IsDeployed");
@@ -63,3 +79,5 @@ app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin())
 app.MapControllers();
 
 app.Run();
+
+

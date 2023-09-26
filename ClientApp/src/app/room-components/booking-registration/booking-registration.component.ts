@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BookingConfirmationService } from 'src/app/services/booking-confirmation.service';
 
 @Component({
   selector: 'app-booking-registration',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./booking-registration.component.css']
 })
 export class BookingRegistrationComponent {
-
+    constructor(private service:BookingConfirmationService,private route:Router){
+      
+    }
+    onclick(){
+      this.service.bookingId=1;
+      this.route.navigateByUrl("/bookingconfirmation")
+    }
 }

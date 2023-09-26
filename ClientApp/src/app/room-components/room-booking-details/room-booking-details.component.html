@@ -6,10 +6,10 @@
 <div class="card">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6" *ngFor="let details of data.bookingDetails">
-                <div class="card-body">
+            <div class="col-sm-6" *ngFor="let details of data">
+                 <div class="card-body">
                     <h3><b>Hi</b>, {{details.firstName}} {{details.lastName}}</h3>
-                    <p>A study room (<b>Room ID: {{details.studyRoom.id}}</b>) was booked for you on</p>
+                    <p>A study room (<b>Room ID: {{details.studyRoom?.id}}</b>) was booked for you on</p>
                     <div class="row">
                         <div class="col-8">
                             <p><b>Date: </b>{{details.date | date}}</p>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <button type="button" class="btn btn-outline-success" [routerLink]="['/bookingregistration']">Add More Rooms</button>
-                </div>
+                </div>  
             </div>
         </div>
     </div>

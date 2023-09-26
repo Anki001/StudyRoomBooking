@@ -24,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RoomBookingDetailsComponent,
     RoomScreenComponent,
     BookingConfirmationScreenComponent,
-    BookingRegistrationComponent
+    BookingRegistrationComponent,
+    ContactUsComponent,
+   
   ],
   imports: [
     BrowserModule,

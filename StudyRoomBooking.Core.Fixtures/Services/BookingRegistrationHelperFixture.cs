@@ -7,8 +7,11 @@ using StudyRoomBooking.Models.Messages.Request;
 
 namespace StudyRoomBooking.Core.Fixtures.Services
 {
+    [TestFixture]
+
    
-    public class BookingRegistrationHelperFixture
+
+    public class BookingRegistrationServiceFixture
     {
         private Mock<IBookingRegistrationHelper> _bookingRegistrationMock;
         private BookingRegistrationServiceHandler _handler;
