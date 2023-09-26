@@ -12,6 +12,7 @@ import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http'
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ export class BookingRegistrationComponent {
       
     }
     onclick(){
-      this.service.bookingId=5;
+      this.service.bookingId=1;
       this.route.navigateByUrl("/bookingconfirmation")
     }
 }

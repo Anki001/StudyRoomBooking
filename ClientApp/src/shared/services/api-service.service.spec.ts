@@ -1,37 +1,82 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ApiServiceService } from './api-service.service';
-import { ApiConstants } from '../constants/api-constants';
-import { Room } from 'src/app/model/room';
-import { BookingDetails } from 'src/app/model/bookingdetails';
+import { ApiServiceService } from './api-service.service'; // Use the correct relative path here
+import { environment } from 'src/environments/environment.prod';
 
-fdescribe('ApiServiceService', () => {
-  let service: ApiServiceService;
-  let httpTestingController:HttpTestingController
+describe('ApiServiceService', () => {
+  let apiService: ApiServiceService;
+  let httpTestingController: HttpTestingController;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[
-        HttpClientTestingModule
-      ]
+      imports: [HttpClientTestingModule],
+      providers: [ApiServiceService],
     });
-    service = TestBed.inject(ApiServiceService);
-    httpTestingController=TestBed.inject(HttpTestingController);
+
+    apiService = TestBed.inject(ApiServiceService);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
+
+  afterEach(() => {
+    httpTestingController.verify();
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(apiService).toBeTruthy();
   });
 
-  it('should retrieve all booking details',()=>{
-    const mockRoom:Room={ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:false }
-        const mockBookingDetails: BookingDetails = { bookingId: 1,firstName:"rakesh",lastName:"pernati",email:"rakesh@gmail.com",date:new Date(),studyRoom:mockRoom};
-    service.GetById(ApiConstants.GET_BOOKING_CONFIRMATION_ID,1).subscribe(details=>{
-        expect(details.bookingDetails).toEqual(mockBookingDetails)
-    })
-    const req=httpTestingController.expectOne('https://localhost:7297/api/BookingConfirmation/1')
-    req.request.method("Get");
-  
-  })
+  it('should make a GET request with an ID', () => {
+    const endpoint = 'example';
+    const id = 1;
+    const responseData = { id, name: 'Test Data' };
+
+    apiService.GetById(endpoint, id).subscribe((response) => {
+      expect(response).toEqual(responseData);
+    });
+
+    const req = httpTestingController.expectOne(`${environment.apiUrl}/${endpoint}/${id}`);
+    expect(req.request.method).toEqual('GET');
+
+    req.flush(responseData);
+  });
+
+  it('should make a POST request', () => {
+    const endpoint = 'example';
+    const requestData = { name: 'Test Data' };
+    const responseData = { id: 1, ...requestData };
+
+    apiService.Post(endpoint, requestData).subscribe((response) => {
+      expect(response).toEqual(responseData);
+    });
+
+    const req = httpTestingController.expectOne(`${environment.apiUrl}/${endpoint}`);
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual(requestData);
+
+    req.flush(responseData);
+  });
+
+  it('should make a POST request with an ID', () => {
+    const endpoint = 'example';
+    const id = 1;
+    const requestData = { name: 'Test Data' };
+    const responseData = { id, ...requestData };
+
+    apiService.PostById(endpoint, id, requestData).subscribe((response) => {
+      expect(response).toEqual(responseData);
+    });
+
+    const req = httpTestingController.expectOne(`${environment.apiUrl}/${endpoint}/${id}`);
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual(requestData);
+
+    req.flush(responseData);
+  });
+
+
+
+
+
 
   
 });

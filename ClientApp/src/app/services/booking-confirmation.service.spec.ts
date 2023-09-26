@@ -3,9 +3,9 @@ import { of, throwError } from 'rxjs';
 import { BookingDetails } from '../model/bookingdetails';
 import { BookingConfirmationService } from './booking-confirmation.service';
 import { ApiServiceService } from 'src/shared/services/api-service.service';
-import { Room } from '../model/room';
+import { StudyRoom } from '../model/studyroom';
 
-fdescribe('BookingConfirmationService', () => {
+describe('BookingConfirmationService', () => {
     let service: BookingConfirmationService;
     let apiService: jasmine.SpyObj<ApiServiceService>;
 
@@ -30,7 +30,7 @@ fdescribe('BookingConfirmationService', () => {
 
     it('should get booking details correctly', () => {
 
-        const mockRoom:Room={ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:false }
+        const mockRoom:StudyRoom={ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:false }
         const mockBookingDetails: BookingDetails = { bookingId: 1,firstName:"rakesh",lastName:"pernati",email:"rakesh@gmail.com",date:new Date(),studyRoom:mockRoom};
 
         apiService.GetById.and.returnValue(of({bookingDetails:mockBookingDetails}))
@@ -39,8 +39,6 @@ fdescribe('BookingConfirmationService', () => {
             
             expect(data.bookingDetails).toEqual(mockBookingDetails)
         })
-
-        
         expect(apiService.GetById).toHaveBeenCalledTimes(1)
 
     });
