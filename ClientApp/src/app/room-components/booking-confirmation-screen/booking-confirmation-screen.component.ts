@@ -12,7 +12,7 @@ export class BookingConfirmationScreenComponent implements OnInit{
 
   public bookingResponse=new BookingReponse;
   public errorMessage:string=" ";
-  constructor(private route: ActivatedRoute, public service: BookingConfirmationService) {
+  constructor(public service: BookingConfirmationService) {
     
   }
   ngOnInit(): void {

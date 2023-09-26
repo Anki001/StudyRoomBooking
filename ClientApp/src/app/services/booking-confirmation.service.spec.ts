@@ -21,8 +21,6 @@ fdescribe('BookingConfirmationService', () => {
 
         service = TestBed.inject(BookingConfirmationService);
 
-        
-
         apiService = TestBed.inject(ApiServiceService) as jasmine.SpyObj<ApiServiceService>;
     });
 
@@ -37,13 +35,12 @@ fdescribe('BookingConfirmationService', () => {
 
         apiService.GetById.and.returnValue(of({bookingDetails:mockBookingDetails}))
 
-        service.getBookingDetailsById(1).subscribe(data=>{
+        service.getBookingDetailsById().subscribe(data=>{
             
             expect(data.bookingDetails).toEqual(mockBookingDetails)
         })
 
         
-
         expect(apiService.GetById).toHaveBeenCalledTimes(1)
 
     });
