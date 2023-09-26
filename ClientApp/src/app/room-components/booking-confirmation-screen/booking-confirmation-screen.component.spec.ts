@@ -1,49 +1,62 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BookingConfirmationScreenComponent } from './booking-confirmation-screen.component';
 import { ActivatedRoute } from '@angular/router';
-import { StudyRoomService } from 'src/app/services/studyroom.service';
-import { bookingDetailsArray } from 'src/assets/data/dummy-booking-details';
-import { bookingDetails } from 'src/app/model/bookingdetails';
+import { BookingConfirmationScreenComponent } from './booking-confirmation-screen.component'; // Update with your path
+import { BookingDetails } from 'src/app/model/bookingdetails';
+import { Room } from 'src/app/model/room';
+import { BookingConfirmationService } from 'src/app/services/booking-confirmation.service';
+import { of } from 'rxjs';
 
-fdescribe('BookingConfirmationScreenComponent', () => {
+describe('BookingConfirmationScreenComponent', () => {
   let component: BookingConfirmationScreenComponent;
   let fixture: ComponentFixture<BookingConfirmationScreenComponent>;
-
-  const mockActivatedRoute = {
-    snapshot: {
-      paramMap: {
-        get: jasmine.createSpy('get').and.returnValue(1) 
-      }
-    }
-  };
+  let mockService: jasmine.SpyObj<BookingConfirmationService>;
+  let mockActivatedRoute: { snapshot: any; };
 
   beforeEach(async () => {
+    mockService = jasmine.createSpyObj('BookingConfirmationService', ['getBookingDetailsById']);
+    mockActivatedRoute = {
+      snapshot: {
+        paramMap: {
+          get: jasmine.createSpy('get')
+        }
+      }
+    };
+
     await TestBed.configureTestingModule({
-      declarations: [ BookingConfirmationScreenComponent ],
+      declarations: [BookingConfirmationScreenComponent],
       providers: [
-        { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: StudyRoomService, useValue: {} }  // Assuming you don't call any service method in the current provided component code
+        { provide: BookingConfirmationService, useValue: mockService },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute }
       ]
-    })
-    .compileComponents();
-  });
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(BookingConfirmationScreenComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
+    component = fixture.componentInstance;
+    
+    mockService=TestBed.inject(BookingConfirmationService) as jasmine.SpyObj<BookingConfirmationService>
+
+    mockActivatedRoute=TestBed.inject(ActivatedRoute) as jasmine.SpyObj<ActivatedRoute>
+    
+  });
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set bookingId from route parameter', () => {
-    expect(component.bookingId).toEqual(1); 
+
+
+  it('should fetch booking details on initialization if bookingId is provided', () => {
+    const mockRoom:Room={ id: 1, name: 'Room 1',roomNumber:'A101',isAvailable:false }
+    const mockBookingDetails:BookingDetails = { bookingId: 1,firstName:"rakesh",lastName:"pernati",email:"rakesh@gmail.com",date:new Date(),studyRoom:mockRoom};
+    mockActivatedRoute.snapshot.paramMap.get.and.returnValue('1');
+    mockService.getBookingDetailsById.and.returnValue(of({bookingDetails:mockBookingDetails}));
+    component.ngOnInit();
+    expect(component)
+
+    expect(component.bookingResponse.bookingDetails?.email).toBe('rakesh@gmail.com');
   });
 
-  it('should set bookingDetails from dummy data based on bookingId', () => {
-    const BookingDetail:bookingDetails[]  = bookingDetailsArray.filter(data => data.bookingId === 1);
-    //expect(component.bookingDetails).toEqual(BookingDetail[0]);
-  });
+
+
+
 });

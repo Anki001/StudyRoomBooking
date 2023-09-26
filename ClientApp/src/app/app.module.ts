@@ -12,9 +12,6 @@ import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http'
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { ContactUsComponent } from './shared-component/contact-us/contact-us.component';
-import {  StudyRoomService } from './services/studyroom.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [StudyRoomService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
