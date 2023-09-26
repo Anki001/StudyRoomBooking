@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿﻿using Microsoft.AspNetCore.Mvc;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.Exceptions;
 using StudyRoomBooking.Models.Messages.Request;
@@ -25,7 +25,7 @@ namespace StudyRoomBooking.Controllers
                     return NotFound($"Given ID {id} is Invalid");
                 }
                 var request = new BookingRequest { Id = id };
-                var bookingResponse = _serviceFactory.ProcessService<BookingRequest, BookingDetailsResponse>(request);
+                var bookingResponse = _serviceFactory.ProcessService<BookingRequest, BookingConfirmationResponse>(request);
 
                 if (bookingResponse == null)
                 {

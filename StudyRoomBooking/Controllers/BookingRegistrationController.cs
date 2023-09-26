@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudyRoomBooking.Core.Services.Interfaces;
-using StudyRoomBooking.Models;
 using StudyRoomBooking.Models.DomainModels;
 using StudyRoomBooking.Models.Messages.Request;
 using StudyRoomBooking.Models.Messages.Response;
@@ -43,8 +42,6 @@ namespace StudyRoomBooking.Controllers
                
                 return Ok($"{result.BookingId}");
               
-
-               
             }
             catch (Exception ex)
             {

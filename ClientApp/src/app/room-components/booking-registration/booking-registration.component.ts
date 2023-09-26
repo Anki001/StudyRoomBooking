@@ -1,7 +1,7 @@
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BookingregistrationRepositoryService } from 'src/app/repositories/bookingregistration-repository.service';
+import { BookingregistrationService } from 'src/app/services/bookingregistration.service';
 
 @Component({
   selector: 'app-booking-registration',
@@ -9,10 +9,9 @@ import { BookingregistrationRepositoryService } from 'src/app/repositories/booki
   styleUrls: ['./booking-registration.component.css']
 })
 export class BookingRegistrationComponent {
-
   registrationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private route: Router,private repository:BookingregistrationRepositoryService) {
+  constructor(private formBuilder: FormBuilder,private route: Router,private bookingRegistarionService:BookingregistrationService) {
     this.registrationForm = this.formBuilder.group({
       firstname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
       lastname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
@@ -42,17 +41,14 @@ export class BookingRegistrationComponent {
 
     if (this.registrationForm?.valid) {
       console.log('Form is valid. Submitting data...');
-      this.repository.bookingRegister(this.registrationForm.value)
+      this.bookingRegistarionService.bookingRegister(this.registrationForm.value)
         .subscribe(result => {
           console.log('Response from server:', result);
 
           if (result === null) {
             console.log('Registration form is invalid or null');
           } else {
-            console.log('Navigation to /bookingconfirmation...');
-             const bookingId = result;
-             console.log(result+'printed result..... and bookingId:'+bookingId);
-            this.route.navigate([`/bookingconfirmation`]);
+            this.route.navigate([`/bookingconfirmation`,result]);
 
             // Clear the form fields
             this.registrationForm.reset({}, { emitEvent: false });
