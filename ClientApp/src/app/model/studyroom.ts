@@ -4,3 +4,4 @@ export class StudyRoom{
     roomNumber?:string;
     isAvailable?:boolean
   }
+  
