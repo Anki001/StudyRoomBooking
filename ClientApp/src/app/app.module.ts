@@ -23,7 +23,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     RoomBookingDetailsComponent,
     RoomScreenComponent,
     BookingConfirmationScreenComponent,
-    BookingRegistrationComponent
+    BookingRegistrationComponent,
+    ContactUsComponent,
+   
   ],
   imports: [
     BrowserModule,
