@@ -13,8 +13,8 @@ export class BookingRegistrationComponent {
 
   constructor(private formBuilder: FormBuilder,private route: Router,private bookingRegistarionService:BookingregistrationService) {
     this.registrationForm = this.formBuilder.group({
-      firstname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
-      lastname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
+      firstname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(3)]],
+      lastname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/),Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       date: ['', [Validators.required, this.notPreviousDay.bind(this)]],
     });
@@ -31,31 +31,31 @@ export class BookingRegistrationComponent {
     }
     return null;
   }
-
   SubmitForm() {
-    console.log('Submitting form...');
     if (this.registrationForm?.invalid) {
-      console.log('Registration form is invalid or null');
       return;
     }
 
     if (this.registrationForm?.valid) {
       console.log('Form is valid. Submitting data...');
       this.bookingRegistarionService.bookingRegister(this.registrationForm.value)
-        .subscribe(result => {
-          console.log('Response from server:', result);
-
-          if (result === null) {
-            console.log('Registration form is invalid or null');
-          } else {
-            this.route.navigate([`/bookingconfirmation`,result]);
-
-            // Clear the form fields
-            this.registrationForm.reset({}, { emitEvent: false });
-          }
-        });
+        .subscribe(
+          result => {
+            if (result === null) {
+              alert('Registration form is invalid or null');
+            } else {
+              this.route.navigate([`/bookingconfirmation`, result]);
+              this.registrationForm.reset({}, { emitEvent: false });
+            }
+          },
+          error => {
+            if (error.status === 404) {
+              alert('StudyRoom is Unavailable');
+            } else {
+              alert('An error occurred while processing the request');
+            }
+          });
     } else {
-      console.log('Another Problem');
       alert('Another Problem');
     }
   }
