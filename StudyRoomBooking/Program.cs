@@ -4,6 +4,8 @@ using StudyRoomBooking.Core.Helpers.Intefaces;
 using StudyRoomBooking.Core.Services;
 using StudyRoomBooking.Core.Services.Interfaces;
 using StudyRoomBooking.DataAccess.Configuration;
+using StudyRoomBooking.DataAccess.Repositories.Interfaces;
+using StudyRoomBooking.DataAccess.Repositories;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,7 @@ builder.Services.AddCors(options =>{
 });
 
 
+builder.Services.AddScoped<IBookingDetailsRepository, BookingDetailsRepository>();
 
 
 builder.Services.AddTransient<IServiceFactory, ServiceHandlerFactory>();
@@ -43,7 +46,6 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
                        {
                            typesToRegister.serviceTypes.ForEach(typeToRegister => builder.Services.AddScoped(typeToRegister, typesToRegister.assignedType));
                        });
-
 var app = builder.Build();
 app.UseCors("MyCorsPolicy");
 
