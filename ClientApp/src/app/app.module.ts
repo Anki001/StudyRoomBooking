@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
 import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from 'src/shared/Toaster/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,11 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     ReactiveFormsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+
+    BrowserAnimationsModule, // Required for animations
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
