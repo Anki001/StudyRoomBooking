@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -8,31 +8,31 @@ import { RoomBookingDetailsComponent } from './room-components/room-booking-deta
 import { RoomScreenComponent } from './room-components/room-screen/room-screen.component';
 import { BookingConfirmationScreenComponent } from './room-components/booking-confirmation-screen/booking-confirmation-screen.component';
 import { BookingRegistrationComponent } from './room-components/booking-registration/booking-registration.component';
-import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from 'src/shared/components/footer/footer.component';
-import {HttpClientModule} from '@angular/common/http'
+import { NavbarComponent } from 'src/shared/components/navbar/navbar.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ContactUsComponent,
+    NavbarComponent,
     RoomBookingDetailsComponent,
     RoomScreenComponent,
     BookingConfirmationScreenComponent,
     BookingRegistrationComponent,
     ContactUsComponent,
-   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -38,8 +38,9 @@ namespace StudyRoomBooking.Controllers
                 {
                     return NotFound("StudyRoom is Unavailable");
                 }
-
-                return Ok($"Your Booking is successfull with BookingId:{result.BookingId}");
+               
+               
+                return Ok($"{result.BookingId}");
               
             }
             catch (Exception ex)
