@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { BookingConfirmationService } from 'src/app/services/booking-confirmation.service';
 import { BookingregistrationService } from 'src/app/services/bookingregistration.service';
+import { GlobalConstants } from 'src/shared/constants/global-constants';
 
 @Component({
   selector: 'app-booking-registration',
@@ -11,12 +12,11 @@ import { BookingregistrationService } from 'src/app/services/bookingregistration
 })
 export class BookingRegistrationComponent {
   registrationForm: FormGroup;
-
   constructor(private formBuilder: FormBuilder,private route: Router,private bookingRegistarionService:BookingregistrationService,private bookingConfirmation:BookingConfirmationService) {
     this.registrationForm = this.formBuilder.group({
-      firstname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(3)]],
-      lastname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/),Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+      firstname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(4),Validators.maxLength(30)]],
+      lastname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/),Validators.minLength(4),Validators.maxLength(25)]],
+      email: ['', [Validators.required, Validators.email,Validators.pattern(GlobalConstants.EMAIL_REGEX)]],
       date: ['', [Validators.required, this.notPreviousDay.bind(this)]],
     });
    }
@@ -38,7 +38,6 @@ export class BookingRegistrationComponent {
     }
 
     if (this.registrationForm?.valid) {
-      console.log('Form is valid. Submitting data...');
       this.bookingRegistarionService.bookingRegister(this.registrationForm.value)
         .subscribe(
           result => {
@@ -52,8 +51,10 @@ export class BookingRegistrationComponent {
           },
           error => {
             if (error.status === 404) {
+              this.registrationForm.reset({}, { emitEvent: false });
               alert('StudyRoom is Unavailable');
             } else {
+              this.registrationForm.reset({}, { emitEvent: false });
               alert('An error occurred while processing the request');
             }
           });
