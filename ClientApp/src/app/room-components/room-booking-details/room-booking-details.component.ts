@@ -8,19 +8,17 @@ import { RoomBookingDetailsService } from 'src/app/services/room-booking-details
   styleUrls: ['./room-booking-details.component.css']
 })
 export class RoomBookingDetailsComponent implements OnInit {
-  
+
   data: BookingDetails[]=[]
 
   constructor(private bookingDetails: RoomBookingDetailsService) {
     this.getAllDetails()
   }
   ngOnInit(): void {
-    
+
   }
    getAllDetails() {
-     console.log("Component Called");
      this.bookingDetails.getAllBookings().subscribe(res => {
-       console.log(res.bookingDetails);
        return this.data = res.bookingDetails
      })
    }

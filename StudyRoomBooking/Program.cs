@@ -36,6 +36,14 @@ builder.Services.AddCors(options =>
 
 
 
+builder.Services.AddCors(options =>{
+    options.AddPolicy("MyCorsPolicy",
+        builder => builder
+        .WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
 
 
 builder.Services.AddScoped<IBookingDetailsRepository, BookingDetailsRepository>();
@@ -53,6 +61,7 @@ Assembly.GetAssembly(typeof(ServiceHandlerFactory))
                            typesToRegister.serviceTypes.ForEach(typeToRegister => builder.Services.AddScoped(typeToRegister, typesToRegister.assignedType));
                        });
 var app = builder.Build();
+app.UseCors("MyCorsPolicy");
 
 app.UseCors("MyCorsPolicy");
 
