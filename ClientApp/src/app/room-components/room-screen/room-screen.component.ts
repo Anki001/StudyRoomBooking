@@ -25,7 +25,7 @@ export class RoomScreenComponent implements OnInit {
         this.rooms = data.rooms;
       },
       (error) => {
-        console.error(GlobalConstants.GENERIC_ERROR, error);
+        alert(GlobalConstants.GENERIC_ERROR);
         this.rooms = []
       }
     );

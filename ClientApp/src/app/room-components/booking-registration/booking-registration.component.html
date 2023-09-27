@@ -13,7 +13,10 @@
             Only alphabets are allowed in the first name.
           </div>
           <div *ngIf="registrationForm.get('firstname')?.dirty && registrationForm.get('firstname')?.hasError('minlength')" class="error-message">
-            First name must be at least 3 characters long.
+            First name must be at least 4 characters long.
+          </div>
+          <div *ngIf="registrationForm.get('firstname')?.dirty && registrationForm.get('firstname')?.hasError('maxlength')" class="error-message">
+            First name must be 30 characters long only.
           </div>
         </div>
         <!-- First name field end -->
@@ -28,7 +31,10 @@
             Only alphabets are allowed in the last name.
           </div>
           <div *ngIf="registrationForm.get('lastname')?.dirty && registrationForm.get('lastname')?.hasError('minlength')" class="error-message">
-            Last name must be at least 3 characters long.
+            Last name must be at least 4 characters long.
+          </div>
+          <div *ngIf="registrationForm.get('lastname')?.dirty && registrationForm.get('lastname')?.hasError('maxlength')" class="error-message">
+            Last name must be 25 max characters long only.
           </div>
         </div>
       </div>
