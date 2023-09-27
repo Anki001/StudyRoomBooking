@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {  ToastrService } from 'ngx-toastr';
 import { BookingConfirmationService } from 'src/app/services/booking-confirmation.service';
 import { BookingregistrationService } from 'src/app/services/bookingregistration.service';
+import { SharedModule } from 'src/shared/Toaster/shared.module';
 import { GlobalConstants } from 'src/shared/constants/global-constants';
 
 @Component({
@@ -12,7 +14,7 @@ import { GlobalConstants } from 'src/shared/constants/global-constants';
 })
 export class BookingRegistrationComponent {
   registrationForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private route: Router,private bookingRegistarionService:BookingregistrationService,private bookingConfirmation:BookingConfirmationService) {
+  constructor(private formBuilder: FormBuilder,private sharedModule:SharedModule,private route: Router,private bookingRegistarionService:BookingregistrationService,private bookingConfirmation:BookingConfirmationService) {
     this.registrationForm = this.formBuilder.group({
       firstname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(4),Validators.maxLength(30)]],
       lastname: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/),Validators.minLength(4),Validators.maxLength(25)]],
@@ -32,6 +34,8 @@ export class BookingRegistrationComponent {
     }
     return null;
   }
+
+  
   SubmitForm() {
     if (this.registrationForm?.invalid) {
       return;
@@ -50,9 +54,9 @@ export class BookingRegistrationComponent {
             }
           },
           error => {
-            if (error.status === 404) {
+            if (error.status === 200) {
               this.registrationForm.reset({}, { emitEvent: false });
-              alert('StudyRoom is Unavailable');
+              this.sharedModule.showToast("Please try again later...","Room is Unavailable","error")
             } else {
               this.registrationForm.reset({}, { emitEvent: false });
               alert('An error occurred while processing the request');

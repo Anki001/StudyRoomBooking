@@ -36,7 +36,7 @@ namespace StudyRoomBooking.Controllers
                 
                 if (result.BookingId == 0)
                 {
-                    return NotFound("StudyRoom is Unavailable");
+                    return Ok("StudyRoom is Unavailable");
                 }
                
                
